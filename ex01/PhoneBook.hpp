@@ -6,7 +6,7 @@
 /*   By: kfortin <kfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 12:41:02 by kfortin           #+#    #+#             */
-/*   Updated: 2024/02/25 15:47:42 by kfortin          ###   ########.fr       */
+/*   Updated: 2024/02/26 14:34:01 by kfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ private:
 
 void    ft_check_storage(PhoneBook inst1);
 void    ft_print_message(int i);
-PhoneBook    set_index(PhoneBook inst1);
-PhoneBook    ft_insert_contact(PhoneBook inst1, std::string input, int index);
-void ft_erase_contact(PhoneBook inst1, std::string input);
+// PhoneBook    set_index(PhoneBook inst1);
+// PhoneBook    ft_insert_contact(PhoneBook inst1, std::string input, int index);
+// void ft_erase_contact(PhoneBook inst1, std::string input);
 
 #endif
