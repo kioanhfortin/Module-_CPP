@@ -6,7 +6,7 @@
 #    By: kfortin <kfortin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/18 12:37:38 by kfortin           #+#    #+#              #
-#    Updated: 2024/02/25 10:16:02 by kfortin          ###   ########.fr        #
+#    Updated: 2024/02/26 15:34:51 by kfortin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,8 @@ NAME = phonebook
 CC = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = PhoneBook.cpp Contact.cpp
-OBJS = $(SRCS:.c=.o)
+SRCS = PhoneBook.cpp Contact.cpp Constructor_Destructor.cpp
+OBJS = $(SRCS:.cpp=.o)
 
 RM = rm -f
 

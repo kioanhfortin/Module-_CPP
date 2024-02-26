@@ -6,7 +6,7 @@
 /*   By: kfortin <kfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 12:41:02 by kfortin           #+#    #+#             */
-/*   Updated: 2024/02/25 11:23:17 by kfortin          ###   ########.fr       */
+/*   Updated: 2024/02/26 15:26:34 by kfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ public:
     void set_darkest_secret(const std::string new_darkest_secret);
     
     // typedef std::string(Contact::*SetFunction)(const std::string&);
-    void    ft_print_info(Contact contact);
     
 private:
     std::string _first_name;
@@ -46,5 +45,7 @@ private:
     std::string _darkest_secret;
     
 };
+
+void    ft_print_info(Contact contact);
 
 #endif
