@@ -6,7 +6,7 @@
 /*   By: kfortin <kfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 12:41:02 by kfortin           #+#    #+#             */
-/*   Updated: 2024/05/08 19:19:36 by kfortin          ###   ########.fr       */
+/*   Updated: 2024/05/11 01:28:25 by kfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ public:
     void set_phone_number(const std::string new_phone_number);
     void set_darkest_secret(const std::string new_darkest_secret);
     
-    // typedef std::string(Contact::*SetFunction)(const std::string&);
-    
 private:
     std::string _first_name;
     std::string _last_name;
@@ -46,7 +44,6 @@ private:
     
 };
 
-// void    ft_print_info(Contact contact);
 void    ft_help_command();
 
 #endif

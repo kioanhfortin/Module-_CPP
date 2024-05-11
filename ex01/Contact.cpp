@@ -6,7 +6,7 @@
 /*   By: kfortin <kfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 14:15:52 by kfortin           #+#    #+#             */
-/*   Updated: 2024/05/11 01:06:25 by kfortin          ###   ########.fr       */
+/*   Updated: 2024/05/11 01:31:22 by kfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ bool   PhoneBook::ft_insert_contact()
     while(i < 5)
     {
         ft_print_message(i);
-        i++;
         std::getline(std::cin, input);
         if (std::cin.eof())
             exit(1);
@@ -50,6 +49,7 @@ bool   PhoneBook::ft_insert_contact()
             PhoneBook::ft_contact_switch(i);
         else
             return (1);
+        i++;
     }
     return (0);
 }

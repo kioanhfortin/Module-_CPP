@@ -6,7 +6,7 @@
 /*   By: kfortin <kfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 12:41:02 by kfortin           #+#    #+#             */
-/*   Updated: 2024/05/11 00:56:48 by kfortin          ###   ########.fr       */
+/*   Updated: 2024/05/11 01:29:38 by kfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ public:
     enum infoType { FIRST, LAST, NICK, PHONE, DARK};
     void   add_contact();
     bool   ft_insert_contact();
-void ft_contact_switch(int i);
+    void ft_contact_switch(int i);
     std::string search_contact();
     void    ft_check_storage();
     void    ft_print_message(int i);
