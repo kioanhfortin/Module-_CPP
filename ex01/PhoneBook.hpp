@@ -6,15 +6,17 @@
 /*   By: kfortin <kfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 12:41:02 by kfortin           #+#    #+#             */
-/*   Updated: 2024/05/11 01:29:38 by kfortin          ###   ########.fr       */
+/*   Updated: 2024/05/11 14:22:02 by kfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHONEBOOK_H
 # define PHONEBOOK_H
-# include <iomanip> 
 # include "Contact.hpp"
-// #include <string.h>
+# include <iomanip> 
+# include <stdlib.h>
+# include <string.h>
+// # include <libc.h>
 
 class PhoneBook
 {
@@ -27,6 +29,7 @@ public:
     bool   ft_insert_contact();
     void ft_contact_switch(int i);
     std::string search_contact();
+    std::string ft_trim_string(const std::string &str);
     void    ft_check_storage();
     void    ft_print_message(int i);
     bool    ft_check_empty_input();
