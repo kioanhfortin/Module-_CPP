@@ -6,7 +6,7 @@
 /*   By: kfortin <kfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 12:41:02 by kfortin           #+#    #+#             */
-/*   Updated: 2024/02/26 15:26:34 by kfortin          ###   ########.fr       */
+/*   Updated: 2024/05/08 19:19:36 by kfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ private:
     
 };
 
-void    ft_print_info(Contact contact);
+// void    ft_print_info(Contact contact);
+void    ft_help_command();
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: kfortin <kfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 16:25:44 by kfortin           #+#    #+#             */
-/*   Updated: 2024/02/26 21:33:07 by kfortin          ###   ########.fr       */
+/*   Updated: 2024/05/11 01:24:55 by kfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@
 //     return inst1;
 // }
 
-void    ft_check_storage(PhoneBook inst1)
+void    PhoneBook::ft_check_storage()
 {
     int i;
 
@@ -57,26 +57,28 @@ void    ft_check_storage(PhoneBook inst1)
     std::getline(std::cin, input);
     if (std::cin.eof())
         exit(1);
-    if (atoi(input.c_str()) > inst1.max_contact || atoi(input.c_str()) <= 0)
+    if (atoi(input.c_str()) > max_contact || atoi(input.c_str()) <= 0)
     {
-        std::cout << "Ivalid index" << std::endl;
+        std::cout << "----> Ivalid index - Restart the action" << std::endl << std::endl;
         return;
     }
     else
     {
         i = atoi(input.c_str());
-        std::string firstName = inst1.contact[i - 1].get_first_name().substr(0, 10);
-        if (strlen(inst1.contact[i].get_first_name().c_str()) > 10)
+        std::string firstName = contact[i - 1].get_first_name().substr(0, 10);
+        if (strlen(contact[i].get_first_name().c_str()) > 10)
             firstName[10 - 1] = '.';
-        std::string lastName = inst1.contact[i - 1].get_last_name().substr(0, 10);
-        if (strlen(inst1.contact[i].get_last_name().c_str()) > 10)
+        std::string lastName = contact[i - 1].get_last_name().substr(0, 10);
+        if (strlen(contact[i].get_last_name().c_str()) > 10)
             lastName[10 - 1] = '.';
-        std::string nickName = inst1.contact[i - 1].get_nickname().substr(0, 10);
-        if (strlen(inst1.contact[i].get_nickname().c_str()) > 10)
+        std::string nickName = contact[i - 1].get_nickname().substr(0, 10);
+        if (strlen(contact[i].get_nickname().c_str()) > 10)
             nickName[10 - 1] = '.';
+        std::cout << "|-----------|----------|----------|---------|" << std::endl;
         std::cout << std::setw(10) << i << "| ";
         std::cout << std::setw(10) << firstName << " | ";
         std::cout << std::setw(10) << lastName << " | ";
         std::cout << std::setw(10) << nickName << " |" << std::endl;
+        std::cout << "|-----------|----------|----------|---------|" << std::endl;
     }
 }
