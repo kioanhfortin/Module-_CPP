@@ -16,7 +16,6 @@ int main(int argc, char **argv)
     ft_help_command();
     while (std::getline(std::cin, input) != NULL || !std::cin.eof())
     {
-        //make a switch
         if (input == "EXIT")
             break;
         if (input == "ADD")
