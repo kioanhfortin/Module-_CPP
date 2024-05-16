@@ -6,7 +6,7 @@
 /*   By: kfortin <kfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 16:25:44 by kfortin           #+#    #+#             */
-/*   Updated: 2024/05/16 16:08:25 by kfortin          ###   ########.fr       */
+/*   Updated: 2024/05/16 17:34:38 by kfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,45 @@ void    ft_help_command()
     std::cout << std::endl << "Enter a command : " << std::endl;
 }
 
+void    PhoneBook::ft_print_all()
+{
+    std::cout << std::endl << "|INDEX_____|FIST_NAME_|LAST_NAME_|NICKNAME__|" << std::endl;
+    for (int i = 0; i < _max_contact; i++)
+    {
+        std::cout << "|----------|----------|----------|----------|" << std::endl;
+        std::cout << "|" << std::setw(10) << i + 1 << "|";
+        std::cout << std::setw(10) << ft_trim_string(_contact[i].get_first_name()) << "|";
+        std::cout << std::setw(10) << ft_trim_string(_contact[i].get_last_name()) << "|";
+        std::cout << std::setw(10) << ft_trim_string(_contact[i].get_nickname()) << "|" << std::endl;
+        std::cout << "|----------|----------|----------|----------|" << std::endl;
+    }
+    std::cout << std::endl;
+}
+
+bool    PhoneBook::ft_is_digit(std::string str)
+{
+    for (int i = 0; str[i]; i++)
+        if (isdigit(str[i]))
+            return false;
+    return true;
+}
+
 void    PhoneBook::ft_check_storage()
 {
     int i;
 
     i = 0;
     std::string input_1;
+    ft_print_all();
     std::cout << "Select a index :" << std::endl;
     std::getline(std::cin, input_1);
     if (std::cin.eof())
         exit(1);
+    if (input_1.length() == 0 || ft_is_digit(input_1))
+    {
+        std::cout << "----> Ivalid index - Restart the action" << std::endl << std::endl;
+        return;
+    }
     i = std::stoi(input_1.c_str());
     if (i > _max_contact || i <= 0)
     {
@@ -36,12 +65,11 @@ void    PhoneBook::ft_check_storage()
     }
     else
     {
-        std::cout << "|----------|----------|----------|----------|" << std::endl;
-        std::cout << "|" << std::setw(10) << i << "|";
-        std::cout << std::setw(10) << ft_trim_string(_contact[i - 1].get_first_name()) << "|";
-        std::cout << std::setw(10) << ft_trim_string(_contact[i - 1].get_last_name()) << "|";
-        std::cout << std::setw(10) << ft_trim_string(_contact[i - 1].get_nickname()) << "|" << std::endl;
-        std::cout << "|----------|----------|----------|----------|" << std::endl;
+        std::cout << " _fist_name : " << _contact[i - 1].get_first_name() << std::endl;
+        std::cout << " _last_name : " << _contact[i - 1].get_last_name() << std::endl;
+        std::cout << " _nickname : " << _contact[i - 1].get_nickname() << std::endl;
+        std::cout << " _phone_number : " << _contact[i - 1].get_phone_number() << std::endl;
+        std::cout << " _darkest_secret : " << _contact[i - 1].get_darkest_secret() << std::endl;
     }
 }
 
@@ -52,9 +80,9 @@ std::string PhoneBook::ft_trim_string(const std::string &str)
     return (str);
 }
 
-bool    PhoneBook::ft_check_empty_input()
+bool    PhoneBook::ft_check_empty_input(std::string input)
 {
-    if (_input.empty())
+    if (input.empty())
     {
         std::cout << "----> Invalid field - Restart the action" << std::endl << std::endl;
         return(false);
@@ -62,34 +90,32 @@ bool    PhoneBook::ft_check_empty_input()
     return (true);
 }
 
-void PhoneBook::ft_contact_switch(int i)
+void PhoneBook::ft_contact_switch(int i, std::string input)
 {
     switch(i)
     {
-        case FIRST: _contact[_nbr_contact].set_first_name(_input);   break;
-        case LAST: _contact[_nbr_contact].set_last_name(_input);   break;
-        case NICK: _contact[_nbr_contact].set_nickname(_input);   break;
-        case PHONE: _contact[_nbr_contact].set_phone_number(_input);   break;
-        case DARK: _contact[_nbr_contact].set_darkest_secret(_input);   break;
+        case FIRST: _contact[_nbr_contact].set_first_name(input);   break;
+        case LAST: _contact[_nbr_contact].set_last_name(input);   break;
+        case NICK: _contact[_nbr_contact].set_nickname(input);   break;
+        case PHONE: _contact[_nbr_contact].set_phone_number(input);   break;
+        case DARK: _contact[_nbr_contact].set_darkest_secret(input);   break;
     }
 }
 
 bool   PhoneBook::ft_insert_contact()
 {
-    int i;
+    std::string input_2;
         
-    i = 0;
-    while(i < 5)
+    for(int i = 0; i < 5; i++)
     {
         ft_print_message(i);
-        std::getline(std::cin, _input);
+        std::getline(std::cin, input_2);
         if (std::cin.eof())
             exit(1);
-        if(ft_check_empty_input() == true)
-            PhoneBook::ft_contact_switch(i);
+        if(ft_check_empty_input(input_2) == true)
+            PhoneBook::ft_contact_switch(i, input_2);
         else
             return (1);
-        i++;
     }
     return (0);
 }
@@ -115,12 +141,12 @@ void PhoneBook::add_contact()
 
 void    PhoneBook::ft_print_message(int i)
 {
-    char *built_tab[5];
+    std::string built_tab[5];
     
-    built_tab[0] = (char *)"_fist_name";
-    built_tab[1] = (char *)"_last_name";
-    built_tab[2] = (char *)"_nickname";
-    built_tab[3] = (char *)"_phone_number";
-    built_tab[4] = (char *)"_darkest_secret";
+    built_tab[0] = "_fist_name";
+    built_tab[1] = "_last_name";
+    built_tab[2] = "_nickname";
+    built_tab[3] = "_phone_number";
+    built_tab[4] = "_darkest_secret";
     std::cout << "Enter your " << built_tab[i] << ": " << std::endl;
 }

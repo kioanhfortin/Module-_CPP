@@ -6,7 +6,7 @@
 /*   By: kfortin <kfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 12:41:02 by kfortin           #+#    #+#             */
-/*   Updated: 2024/05/16 16:06:53 by kfortin          ###   ########.fr       */
+/*   Updated: 2024/05/16 17:34:13 by kfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <iomanip> 
 # include <iostream>
 # include <string>
+# include <ctype.h>
 
 class PhoneBook
 {
@@ -26,11 +27,13 @@ public:
     enum infoType { FIRST, LAST, NICK, PHONE, DARK};
     void   add_contact();
     bool   ft_insert_contact();
-    void ft_contact_switch(int i);
+    void    ft_contact_switch(int i, std::string input);
     std::string ft_trim_string(const std::string &str);
+    bool    ft_is_digit(std::string str);
     void    ft_check_storage();
+    void    ft_print_all();
     void    ft_print_message(int i);
-    bool    ft_check_empty_input();
+    bool    ft_check_empty_input(std::string input);
 
     std::string get_input() const;
     bool    read_input();

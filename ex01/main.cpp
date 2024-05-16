@@ -9,9 +9,6 @@ int main(int argc, char **argv)
         return 1; 
     }
     PhoneBook  inst1;
-    // std::string input;
-    // inst1._nbr_contact = 0;
-    // inst1._max_contact = 0;
     std::cout << std::endl << "*** Your PhoneBook is now open ! " << std::endl;
     ft_help_command();
     while (inst1.read_input() || !std::cin.eof())
