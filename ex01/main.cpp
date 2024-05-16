@@ -9,18 +9,18 @@ int main(int argc, char **argv)
         return 1; 
     }
     PhoneBook  inst1;
-    std::string input;
-    inst1.nbr_contact = 0;
-    inst1.max_contact = 0;
+    // std::string input;
+    // inst1._nbr_contact = 0;
+    // inst1._max_contact = 0;
     std::cout << std::endl << "*** Your PhoneBook is now open ! " << std::endl;
     ft_help_command();
-    while (std::getline(std::cin, input) != NULL || !std::cin.eof())
+    while (inst1.read_input() || !std::cin.eof())
     {
-        if (input == "EXIT")
+        if (inst1.get_input() == "EXIT")
             break;
-        if (input == "ADD")
+        if (inst1.get_input() == "ADD")
             inst1.add_contact();
-        if (input == "SEARCH")
+        if (inst1.get_input() == "SEARCH")
             inst1.ft_check_storage();
         ft_help_command();
     }

@@ -5,58 +5,38 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kfortin <kfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/26 14:30:07 by kfortin           #+#    #+#             */
-/*   Updated: 2024/02/26 14:53:37 by kfortin          ###   ########.fr       */
+/*   Created: 2024/02/26 14:15:52 by kfortin           #+#    #+#             */
+/*   Updated: 2024/05/16 16:07:26 by kfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
-void Contact::set_first_name(const std::string new_first_name)
-{
-    _first_name = new_first_name;
+PhoneBook::PhoneBook(void){
+    
+    std::cout << "PhoneBook Contructor called" << std::endl;
+
+    return;
 }
 
-void Contact::set_last_name(const std::string new_last_name)
-{
-    _last_name = new_last_name;
+PhoneBook::~PhoneBook(void){
+    
+    std::cout << "PhoneBook Destructor called" << std::endl;
+
+    return;
 }
 
-void Contact::set_nickname(const std::string new_nickname)
-{
-    _nickname = new_nickname;
+std::string PhoneBook::get_input() const{
+    return _input;
 }
 
-void Contact::set_phone_number(const std::string new_phone_number)
+bool    PhoneBook::read_input()
 {
-    _phone_number = new_phone_number;
+    if (std::getline(std::cin, this->_input))
+        return true;
+    return false;
 }
 
-void Contact::set_darkest_secret(const std::string new_darkest_secret) {
-    _darkest_secret = new_darkest_secret;
-}
-
-std::string Contact::get_first_name() const
-{
-    return _first_name;
-}
-
-std::string Contact::get_last_name() const
-{
-    return _last_name;
-}
-
-std::string Contact::get_nickname() const
-{
-    return _nickname;
-}
-
-std::string Contact::get_phone_number() const
-{
-    return _phone_number;
-}
-
-std::string Contact::get_darkest_secret() const
-{
-    return _darkest_secret;
+void PhoneBook::set_input(const std::string &input) {
+    _input = input;
 }

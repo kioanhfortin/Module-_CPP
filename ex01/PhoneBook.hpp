@@ -6,7 +6,7 @@
 /*   By: kfortin <kfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 12:41:02 by kfortin           #+#    #+#             */
-/*   Updated: 2024/05/11 14:22:02 by kfortin          ###   ########.fr       */
+/*   Updated: 2024/05/16 16:06:53 by kfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 # define PHONEBOOK_H
 # include "Contact.hpp"
 # include <iomanip> 
-# include <stdlib.h>
-# include <string.h>
-// # include <libc.h>
+# include <iostream>
+# include <string>
 
 class PhoneBook
 {
@@ -28,23 +27,20 @@ public:
     void   add_contact();
     bool   ft_insert_contact();
     void ft_contact_switch(int i);
-    std::string search_contact();
     std::string ft_trim_string(const std::string &str);
     void    ft_check_storage();
     void    ft_print_message(int i);
     bool    ft_check_empty_input();
 
-    std::string input;
-    int nbr_contact;
-    int max_contact;
-    Contact contact[8];
-    
+    std::string get_input() const;
+    bool    read_input();
+    void set_input(const std::string &input);
+
 private:
-
+    std::string _input;
+    int _nbr_contact;
+    int _max_contact;
+    Contact _contact[8];
 };
-
-// PhoneBook    ft_print_end(PhoneBook inst1, int i, int _maxChar);
-// int   ft_print_space(int nb_sp, int _maxChar);
-// void ft_erase_contact(PhoneBook inst1, std::string input);
 
 #endif

@@ -5,88 +5,72 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kfortin <kfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/26 14:15:52 by kfortin           #+#    #+#             */
-/*   Updated: 2024/05/11 01:31:22 by kfortin          ###   ########.fr       */
+/*   Created: 2024/02/26 14:30:07 by kfortin           #+#    #+#             */
+/*   Updated: 2024/05/16 14:49:59 by kfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
-bool    PhoneBook::ft_check_empty_input()
+void Contact::set_first_name(const std::string new_first_name)
 {
-    if (input.empty())
-    {
-        std::cout << "----> Invalid field - Restart the action" << std::endl << std::endl;
-        return(false);
-    }
-    return (true);
+    _first_name = new_first_name;
 }
 
-void PhoneBook::ft_contact_switch(int i)
+void Contact::set_last_name(const std::string new_last_name)
 {
-    switch(i)
-    {
-        case FIRST: contact[nbr_contact].set_first_name(input);   break;
-        case LAST: contact[nbr_contact].set_last_name(input);   break;
-        case NICK: contact[nbr_contact].set_nickname(input);   break;
-        case PHONE: contact[nbr_contact].set_phone_number(input);   break;
-        case DARK: contact[nbr_contact].set_darkest_secret(input);   break;
-    }
+    _last_name = new_last_name;
 }
 
-bool   PhoneBook::ft_insert_contact()
+void Contact::set_nickname(const std::string new_nickname)
 {
-    int i;
-        
-    i = 0;
-    while(i < 5)
-    {
-        ft_print_message(i);
-        std::getline(std::cin, input);
-        if (std::cin.eof())
-            exit(1);
-        if(ft_check_empty_input() == true)
-            PhoneBook::ft_contact_switch(i);
-        else
-            return (1);
-        i++;
-    }
-    return (0);
+    _nickname = new_nickname;
 }
 
-void PhoneBook::add_contact()
+void Contact::set_phone_number(const std::string new_phone_number)
 {
-    if (nbr_contact < 8)
-    {
-        if (ft_insert_contact() == 1)
-            return;
-        max_contact++;
-        nbr_contact++;
-    }
-    else
-    {
-        if (nbr_contact == 8)
-            nbr_contact = 0;
-        if (ft_insert_contact() == 1)
-            return;
-        nbr_contact++;
-    }
+    _phone_number = new_phone_number;
 }
 
-void    PhoneBook::ft_print_message(int i)
+void Contact::set_darkest_secret(const std::string new_darkest_secret) {
+    _darkest_secret = new_darkest_secret;
+}
+
+std::string Contact::get_first_name() const
 {
-    char *built_tab[5];
+    return _first_name;
+}
+
+std::string Contact::get_last_name() const
+{
+    return _last_name;
+}
+
+std::string Contact::get_nickname() const
+{
+    return _nickname;
+}
+
+std::string Contact::get_phone_number() const
+{
+    return _phone_number;
+}
+
+std::string Contact::get_darkest_secret() const
+{
+    return _darkest_secret;
+}
+
+Contact::Contact(void){
     
-    built_tab[0] = (char *)"_fist_name";
-    built_tab[1] = (char *)"_last_name";
-    built_tab[2] = (char *)"_nickname";
-    built_tab[3] = (char *)"_phone_number";
-    built_tab[4] = (char *)"_darkest_secret";
-    std::cout << "Enter your " << built_tab[i] << ": " << std::endl;
+    std::cout << "Contact Contructor called" << std::endl;
+
+    return;
 }
 
-void    ft_help_command()
-{
-    std::cout << std::endl << "Command (ADD, SEARCH, EXIT)" << std::endl;
-    std::cout << std::endl << "Enter a command : " << std::endl;
+Contact::~Contact(void){
+    
+    std::cout << "Contact Destructor called" << std::endl;
+
+    return;
 }

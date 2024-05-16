@@ -6,15 +6,14 @@
 /*   By: kfortin <kfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 12:41:02 by kfortin           #+#    #+#             */
-/*   Updated: 2024/05/11 01:28:25 by kfortin          ###   ########.fr       */
+/*   Updated: 2024/05/16 14:35:51 by kfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CONTACT_H
 # define CONTACT_H
 #include <iostream>
-#include <string.h>
-// # include <stdio.h>
+#include <string>
 
 class Contact
 {
