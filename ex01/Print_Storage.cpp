@@ -6,7 +6,7 @@
 /*   By: kfortin <kfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 16:25:44 by kfortin           #+#    #+#             */
-/*   Updated: 2024/05/16 17:34:38 by kfortin          ###   ########.fr       */
+/*   Updated: 2024/05/20 13:57:38 by kfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ bool   PhoneBook::ft_insert_contact()
 
 void PhoneBook::add_contact()
 {
-    if (_nbr_contact < 8)
+    if (_max_contact < 8)
     {
         if (ft_insert_contact() == 1)
             return;
