@@ -6,7 +6,7 @@
 #    By: kfortin <kfortin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/18 12:37:38 by kfortin           #+#    #+#              #
-#    Updated: 2024/02/18 12:59:05 by kfortin          ###   ########.fr        #
+#    Updated: 2024/05/20 12:47:26 by kfortin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ CC = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRCS = megaphone.cpp
-OBJS = $(SRCS:.c=.o)
+OBJS = $(SRCS:.cpp=.o)
 
 RM = rm -f
 
