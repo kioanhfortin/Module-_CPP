@@ -6,7 +6,7 @@
 /*   By: kfortin <kfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 16:25:44 by kfortin           #+#    #+#             */
-/*   Updated: 2024/05/20 13:57:38 by kfortin          ###   ########.fr       */
+/*   Updated: 2024/05/20 15:51:01 by kfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,16 @@ void    PhoneBook::ft_check_storage()
         std::cout << "----> Ivalid index - Restart the action" << std::endl << std::endl;
         return;
     }
-    i = std::stoi(input_1.c_str());
+    try
+    {
+        i = std::stoi(input_1.c_str());
+        
+    } 
+    catch (std::exception e)
+    {
+        std::cout << e.what() << std::endl << std::endl;
+        return;
+    }
     if (i > _max_contact || i <= 0)
     {
         std::cout << "----> Ivalid index - Restart the action" << std::endl << std::endl;
