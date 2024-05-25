@@ -5,19 +5,19 @@
 #                                                     +:+ +:+         +:+      #
 #    By: kfortin <kfortin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/02/18 12:37:38 by kfortin           #+#    #+#              #
-#    Updated: 2024/05/16 16:06:04 by kfortin          ###   ########.fr        #
+#    Created: 2024/05/22 21:33:30 by kfortin           #+#    #+#              #
+#    Updated: 2024/05/22 21:38:59 by kfortin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = phonebook
+NAME = brainz
 CC = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = Contact.cpp PhoneBook.cpp Print_Storage.cpp main.cpp
+SRCS = main.cpp
 OBJS = $(SRCS:.cpp=.o)
 
-RM = rm -f
+RM = rm -fclean
 
 all :	$(NAME)
 
@@ -27,7 +27,7 @@ $(NAME) :	$(OBJS)
 clean :
 	$(RM) $(OBJS)
 
-fclean : clean 
+fclean : clean
 	$(RM) $(NAME)
 
 re : fclean all

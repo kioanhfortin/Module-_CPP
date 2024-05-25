@@ -1,34 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kfortin <kfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/20 12:09:16 by kfortin           #+#    #+#             */
-/*   Updated: 2024/05/20 12:48:02 by kfortin          ###   ########.fr       */
+/*   Created: 2024/05/22 21:27:40 by kfortin           #+#    #+#             */
+/*   Updated: 2024/05/22 22:43:58 by kfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef ZOMBIE_H
+# define ZOMBIE_H
 #include <iostream>
+#include <string>
 
-int main(int argc, char **argv)
+class Zombie
 {
-    int i;
+    
+public:
+    Zombie(void);
+    ~Zombie(void);
+    
+    void annouce(void);
 
-    i = 1;
-    std::string str;
-    if (argc > 1)
-    {
-        while (i < argc)
-        {
-            str = argv[i];
-            transform(str.begin(), str.end(), str.begin(), toupper);
-            std ::cout << str;
-            i++;
-        }
-        std ::cout << std::endl;
-    }
-    else
-        std ::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std ::endl;
-}
+    Zombie* newZoombie(std::string name);
+    
+    void randoomChump(std::string name);
+    
+    std::string get_name() const;
+    void set_name(const std::string new_name);
+
+private:
+    std::string name;
+    
+};
+
+#endif
