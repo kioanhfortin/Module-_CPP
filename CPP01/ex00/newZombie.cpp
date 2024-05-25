@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   newZombie.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kfortin <kfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/25 12:46:13 by kfortin           #+#    #+#             */
-/*   Updated: 2024/05/25 12:53:40 by kfortin          ###   ########.fr       */
+/*   Created: 2024/05/25 12:46:53 by kfortin           #+#    #+#             */
+/*   Updated: 2024/05/25 12:47:01 by kfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-int main()
+Zombie* newZombie(std::string name)
 {
-    Zombie* myZombie = newZombie("foo");
-    myZombie->annouce();
-    randomChump("bar");
-    delete myZombie;
-    return 0;
+    Zombie* new_zombie = new Zombie(name);
+    return (new_zombie);
 }

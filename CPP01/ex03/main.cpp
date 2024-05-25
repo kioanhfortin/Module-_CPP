@@ -6,17 +6,22 @@
 /*   By: kfortin <kfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 12:46:13 by kfortin           #+#    #+#             */
-/*   Updated: 2024/05/25 12:53:40 by kfortin          ###   ########.fr       */
+/*   Updated: 2024/05/25 15:23:57 by kfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "Weapon.hpp"
+#include "HumanA.hpp"
 
 int main()
 {
-    Zombie* myZombie = newZombie("foo");
-    myZombie->annouce();
-    randomChump("bar");
-    delete myZombie;
+    {
+        Weapon club = Weapon("crude spiked club");
+        
+        HumanA bob("bob", club);
+        bob.attack();
+        club.setType("some other type of club");
+        bob.attack();
+    }
     return 0;
 }

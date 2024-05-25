@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   HumanB.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kfortin <kfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/25 12:46:13 by kfortin           #+#    #+#             */
-/*   Updated: 2024/05/25 12:53:40 by kfortin          ###   ########.fr       */
+/*   Created: 2024/05/25 13:41:50 by kfortin           #+#    #+#             */
+/*   Updated: 2024/05/25 14:08:42 by kfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef HUMANB_H
+# define HUMANB_H
+#include <iostream>
+#include <string>
 
-int main()
+class HumanB
 {
-    Zombie* myZombie = newZombie("foo");
-    myZombie->annouce();
-    randomChump("bar");
-    delete myZombie;
-    return 0;
-}
+    
+public:
+
+private:
+    
+};
+
+#endif

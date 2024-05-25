@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   HumanA.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kfortin <kfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/25 12:46:13 by kfortin           #+#    #+#             */
-/*   Updated: 2024/05/25 12:53:40 by kfortin          ###   ########.fr       */
+/*   Created: 2024/05/25 13:48:41 by kfortin           #+#    #+#             */
+/*   Updated: 2024/05/25 15:26:29 by kfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "HumanA.hpp"
 
-int main()
+void HumanA::attack() const
 {
-    Zombie* myZombie = newZombie("foo");
-    myZombie->annouce();
-    randomChump("bar");
-    delete myZombie;
-    return 0;
+    std::cout << _name << " attacks with their " << _type.getType() << std::endl;
+}
+
+HumanA::HumanA(const std::string &_name, Weapon &_type) : _type(_type), _name(_name) 
+{
+    std::cout << "HumanA Constructor called" << std::endl;
+}
+
+HumanA::~HumanA()
+{
+    std::cout << "HumanA Destructor called" << std::endl;
 }

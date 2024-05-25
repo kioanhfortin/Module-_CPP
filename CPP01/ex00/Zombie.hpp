@@ -6,7 +6,7 @@
 /*   By: kfortin <kfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 21:27:40 by kfortin           #+#    #+#             */
-/*   Updated: 2024/05/22 22:43:58 by kfortin          ###   ########.fr       */
+/*   Updated: 2024/05/25 12:44:23 by kfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,20 @@ class Zombie
 {
     
 public:
-    Zombie(void);
-    ~Zombie(void);
+    Zombie(std::string name);
+    ~Zombie();
     
-    void annouce(void);
-
-    Zombie* newZoombie(std::string name);
-    
-    void randoomChump(std::string name);
+    void set_name(const std::string new_name);
+    void annouce(void) const;
     
     std::string get_name() const;
-    void set_name(const std::string new_name);
 
 private:
-    std::string name;
+    std::string _name;
     
 };
+
+Zombie* newZombie(std::string name);
+void randomChump(std::string name);
 
 #endif

@@ -1,22 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kfortin <kfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/25 12:46:13 by kfortin           #+#    #+#             */
-/*   Updated: 2024/05/25 12:53:40 by kfortin          ###   ########.fr       */
+/*   Created: 2024/05/25 13:41:57 by kfortin           #+#    #+#             */
+/*   Updated: 2024/05/25 15:43:15 by kfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef WEAPON_H
+# define WEAPON_H
+#include <iostream>
+#include <string>
 
-int main()
+class Weapon
 {
-    Zombie* myZombie = newZombie("foo");
-    myZombie->annouce();
-    randomChump("bar");
-    delete myZombie;
-    return 0;
-}
+    
+public:
+    Weapon(std::string _type);
+    ~Weapon();
+    std::string getType() const;
+    void    setType(const std::string new_type);
+    
+private:
+    std::string _type;
+
+};
+
+#endif
