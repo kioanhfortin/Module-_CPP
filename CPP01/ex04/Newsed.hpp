@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanA.hpp                                         :+:      :+:    :+:   */
+/*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kfortin <kfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 13:41:57 by kfortin           #+#    #+#             */
-/*   Updated: 2024/05/26 11:38:27 by kfortin          ###   ########.fr       */
+/*   Updated: 2024/05/26 12:17:39 by kfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HUMANA_H
-# define HUMANA_H
-# include "Weapon.hpp"
-# include <iostream>
+#ifndef NEWSED_H
+# define NEWSED_H
+#include <iostream>
+#include <string>
 
-class HumanA
+class newsed
 {
     
 public:
-    HumanA(const std::string &_name, Weapon &_type);
-    ~HumanA();
-    void attack() const;
     
 private:
-    Weapon &_type;
-    std::string _name;
 
 };
 
