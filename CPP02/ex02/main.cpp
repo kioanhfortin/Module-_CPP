@@ -6,7 +6,7 @@
 /*   By: kfortin <kfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 17:32:16 by kfortin           #+#    #+#             */
-/*   Updated: 2024/05/31 20:35:26 by kfortin          ###   ########.fr       */
+/*   Updated: 2024/06/01 13:33:58 by kfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int main(void)
 
     std::cout << b << std::endl;
 
-    // std::cout << Fixed::max(a , b) << std::endl;
+    std::cout << Fixed::max(a , b) << std::endl;
     
     return 0;
 }

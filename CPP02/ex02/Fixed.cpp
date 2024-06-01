@@ -6,7 +6,7 @@
 /*   By: kfortin <kfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 17:29:25 by kfortin           #+#    #+#             */
-/*   Updated: 2024/05/31 20:53:14 by kfortin          ###   ########.fr       */
+/*   Updated: 2024/06/01 13:33:09 by kfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,8 +128,9 @@ Fixed &Fixed::operator++()
 
 Fixed Fixed::operator++(int)
 {
-    _vir++;
-    return *this;
+    Fixed temp = *this;
+    ++(*this);
+    return temp;
 }
 
 Fixed &Fixed::operator--()
@@ -140,26 +141,27 @@ Fixed &Fixed::operator--()
 
 Fixed Fixed::operator--(int)
 {
-    _vir--;
-    return *this;
+    Fixed temp = *this;
+    --(*this);
+    return temp;
 }
 
-const Fixed &Fixed::min_const(const Fixed &a, const Fixed &b);
+const Fixed &Fixed::min(const Fixed &a, const Fixed &b)
 {
     return (a < b) ? a : b;
 }
 
-Fixed &Fixed::min(const Fixed &a, const Fixed &b);
+Fixed &Fixed::min(Fixed &a, Fixed &b)
 {
     return (a < b) ? a : b;
 }
 
-const Fixed &Fixed::max_const(const Fixed &a, const Fixed &b);
+const Fixed &Fixed::max(const Fixed &a, const Fixed &b)
 {
     return (a > b) ? a : b;
 }
 
-Fixed &Fixed::max(const Fixed &a, const Fixed &b);
+Fixed &Fixed::max(Fixed &a, Fixed &b)
 {
     return (a > b) ? a : b;
 }
