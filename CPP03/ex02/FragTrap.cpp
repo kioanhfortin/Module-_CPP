@@ -1,24 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   FragTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kfortin <kfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/01 13:46:50 by kfortin           #+#    #+#             */
-/*   Updated: 2024/06/02 11:59:32 by kfortin          ###   ########.fr       */
+/*   Created: 2024/06/02 13:25:00 by kfortin           #+#    #+#             */
+/*   Updated: 2024/06/02 13:39:32 by kfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
-
-int main(void)
-{
-    ClapTrap Monster("Monster");
-    ClapTrap Soldier("Soldier");
-
-    Monster.attack("Soldier");
-    Soldier.takeDamage(0);
-    Monster.beRepaired(10);
-    Soldier.attack("Monster");
-}
+#include "FragTrap.hpp"

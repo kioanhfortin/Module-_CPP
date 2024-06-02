@@ -1,24 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kfortin <kfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/01 13:46:50 by kfortin           #+#    #+#             */
-/*   Updated: 2024/06/02 11:59:32 by kfortin          ###   ########.fr       */
+/*   Created: 2024/06/02 13:20:00 by kfortin           #+#    #+#             */
+/*   Updated: 2024/06/02 13:40:14 by kfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef FRAGTRAP_H
+# define FRAGTRAP_H
+#include <iostream>
 #include "ClapTrap.hpp"
 
-int main(void)
+class FragTrap : public ClapTrap
 {
-    ClapTrap Monster("Monster");
-    ClapTrap Soldier("Soldier");
+    
+public:
+    FragTrap(const std::string &_name);
+    ~FragTrap();
 
-    Monster.attack("Soldier");
-    Soldier.takeDamage(0);
-    Monster.beRepaired(10);
-    Soldier.attack("Monster");
+    void    attack(const std::string &target);
+    void    takeDamage(unsigned int amount);
+    void    beRepaired(unsigned int amount);
+    void    guardGate();
+    
+private:
+
 }
+
+#endif

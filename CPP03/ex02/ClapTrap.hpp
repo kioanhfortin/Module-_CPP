@@ -6,7 +6,7 @@
 /*   By: kfortin <kfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 21:27:40 by kfortin           #+#    #+#             */
-/*   Updated: 2024/06/02 12:04:04 by kfortin          ###   ########.fr       */
+/*   Updated: 2024/06/02 13:09:14 by kfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,22 @@ public:
     ClapTrap(const std::string &_name);
     ~ClapTrap();
 
-    void attack(const std::string &target);
+    virtual void attack(const std::string &target);
     void takeDamage(unsigned int amount);
     void beRepaired(unsigned int amount);
 
-private:
+    std::string get_name() const;
+    int get_hitPoint() const;
+    int get_energyPoint() const;
+    int get_attackDamage() const;
+    
+    void set_name(const std::string new_name);
+    void set_hitPoint(const int new_hitPoint);
+    void set_energyPoint(const int new_energyPoint);
+    void set_attackDamage(const int new_attackDamage);
+    
+
+protected:
     std::string _name;
     int _hitPoint;
     int _energyPoint;
