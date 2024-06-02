@@ -6,7 +6,7 @@
 /*   By: kfortin <kfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 13:20:00 by kfortin           #+#    #+#             */
-/*   Updated: 2024/06/02 13:40:14 by kfortin          ###   ########.fr       */
+/*   Updated: 2024/06/02 18:41:20 by kfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ public:
     void    attack(const std::string &target);
     void    takeDamage(unsigned int amount);
     void    beRepaired(unsigned int amount);
-    void    guardGate();
+    void    highFivesGuys(void);
     
 private:
 
-}
+};
 
 #endif

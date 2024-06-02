@@ -6,7 +6,7 @@
 /*   By: kfortin <kfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 13:46:50 by kfortin           #+#    #+#             */
-/*   Updated: 2024/06/02 13:22:41 by kfortin          ###   ########.fr       */
+/*   Updated: 2024/06/02 18:42:36 by kfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,14 @@ int main(void)
     Scav.takeDamage(20);
     Scav.beRepaired(10);
     Scav.guardGate();
+
+    std::cout << std::endl;
+
+    FragTrap Frag("Fraggy");
+    Frag.attack("practice target");
+    Frag.takeDamage(20);
+    Frag.beRepaired(10);
+    Frag.highFivesGuys();
 
     std::cout << std::endl;
 }
