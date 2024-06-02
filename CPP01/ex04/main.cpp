@@ -6,7 +6,7 @@
 /*   By: kfortin <kfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 12:18:16 by kfortin           #+#    #+#             */
-/*   Updated: 2024/05/26 20:21:30 by kfortin          ###   ########.fr       */
+/*   Updated: 2024/06/02 18:47:12 by kfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ int main(int argc, char **argv)
 {
     if (argc == 4)
     {
+        if (((std::string)argv[2]).length() == 0)
+            return 1;
         std::ifstream fd1(argv[1]);
         if (!fd1.is_open())
         {
