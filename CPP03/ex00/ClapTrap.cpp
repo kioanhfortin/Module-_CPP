@@ -6,15 +6,20 @@
 /*   By: kfortin <kfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 13:49:46 by kfortin           #+#    #+#             */
-/*   Updated: 2024/06/02 11:58:12 by kfortin          ###   ########.fr       */
+/*   Updated: 2024/06/05 09:26:03 by kfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
+ClapTrap::ClapTrap() : _name("Default"), _hitPoint(10), _energyPoint(10), _attackDamage(0)
+{
+    std::cout << "ClapTrap default constructor called" << std::endl;
+}
+
 ClapTrap::ClapTrap(const std::string &_name) : _name(_name), _hitPoint(10), _energyPoint(10), _attackDamage(0)
 {
-     std::cout << "ClapTrap " << _name << " constructor called" << std::endl;
+    std::cout << "ClapTrap " << _name << " constructor called" << std::endl;
 }
 
 ClapTrap::~ClapTrap()
@@ -46,4 +51,22 @@ void ClapTrap::beRepaired(unsigned int amount)
     std::cout << "ClapTrap " << _name << " regain " << amount << " hit point!" << std::endl;
     for (unsigned int i = 0; i < amount; i++)
         _hitPoint++;
+}
+
+ClapTrap::ClapTrap(const ClapTrap &other) : _name(other._name), _hitPoint(other._hitPoint), _energyPoint(other._energyPoint), _attackDamage(other._attackDamage)
+{
+    std::cout << "ClapTrap " << _name << " Copy constructor called" << std::endl;
+}
+
+ClapTrap &ClapTrap::operator = (const ClapTrap &other)
+{
+    if (this != &other)
+    {
+        _name = other._name;
+        _hitPoint = other._hitPoint;
+        _energyPoint = other._energyPoint;
+        _attackDamage = other._attackDamage;
+    }
+    std::cout << "ClapTrap " << _name << " Copy assignment operator called" << std::endl;
+    return *this;
 }

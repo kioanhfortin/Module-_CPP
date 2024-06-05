@@ -6,7 +6,7 @@
 /*   By: kfortin <kfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 12:02:28 by kfortin           #+#    #+#             */
-/*   Updated: 2024/06/02 13:15:51 by kfortin          ###   ########.fr       */
+/*   Updated: 2024/06/05 09:31:28 by kfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@ class ScavTrap : public ClapTrap
 {
 
 public:
+    ScavTrap();
     ScavTrap(const std::string &_name);
+    ScavTrap(const ScavTrap &other);
+    ScavTrap &operator = (const ScavTrap &other);
     ~ScavTrap();
 
     void    attack(const std::string &target);
