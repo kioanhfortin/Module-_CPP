@@ -6,11 +6,19 @@
 /*   By: kfortin <kfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 12:14:33 by kfortin           #+#    #+#             */
-/*   Updated: 2024/06/02 13:18:03 by kfortin          ###   ########.fr       */
+/*   Updated: 2024/06/05 16:32:13 by kfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
+
+ScavTrap::ScavTrap() : ClapTrap("Default")
+{
+    set_hitPoint(100);
+    set_energyPoint(50);
+    set_attackDamage(20);
+    std::cout << "ScavTrap " << get_name() << " constructor called" << std::endl;
+}
 
 ScavTrap::ScavTrap(const std::string &_name) : ClapTrap(_name)
 {
@@ -54,4 +62,25 @@ void ScavTrap::beRepaired(unsigned int amount)
 void ScavTrap::guardGate()
 {
     std::cout << "Gate keeper mode entered!" << std::endl;
+}
+
+ScavTrap::ScavTrap(const ScavTrap &other) : ClapTrap(other._name)
+{
+    set_hitPoint(other._hitPoint);
+    set_energyPoint(other._energyPoint);
+    set_attackDamage(other._attackDamage);
+    std::cout << "ScavTrap " << _name << " Copy constructor called" << std::endl;
+}
+
+ScavTrap &ScavTrap::operator = (const ScavTrap &other)
+{
+    if (this != &other)
+    {
+        _name = other._name;
+        _hitPoint = other._hitPoint;
+        _energyPoint = other._energyPoint;
+        _attackDamage = other._attackDamage;
+    }
+    std::cout << "ScavTrap " << _name << " Copy assignment operator called" << std::endl;
+    return *this;
 }

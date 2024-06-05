@@ -6,7 +6,7 @@
 /*   By: kfortin <kfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 13:46:50 by kfortin           #+#    #+#             */
-/*   Updated: 2024/06/02 13:18:27 by kfortin          ###   ########.fr       */
+/*   Updated: 2024/06/05 16:29:08 by kfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,14 @@ int main(void)
     Clap.attack("practice target");
     Clap.takeDamage(5);
     Clap.beRepaired(3);
+
+    std::cout << std::endl;
+
+    ScavTrap ScavDefault;
+    ScavDefault.attack("practice target Default");
+    ScavDefault.takeDamage(40);
+    ScavDefault.beRepaired(20);
+    ScavDefault.guardGate();
 
     std::cout << std::endl;
 

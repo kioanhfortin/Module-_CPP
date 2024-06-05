@@ -6,7 +6,7 @@
 /*   By: kfortin <kfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 12:14:33 by kfortin           #+#    #+#             */
-/*   Updated: 2024/06/05 09:42:56 by kfortin          ###   ########.fr       */
+/*   Updated: 2024/06/05 16:28:22 by kfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ ScavTrap::ScavTrap() : ClapTrap("Default")
     set_hitPoint(100);
     set_energyPoint(50);
     set_attackDamage(20);
-    std::cout << "ScavTrap default constructor called" << std::endl;
+    std::cout << "ScavTrap " << get_name() << " constructor called" << std::endl;
 }
 
 ScavTrap::ScavTrap(const std::string &_name) : ClapTrap(_name)

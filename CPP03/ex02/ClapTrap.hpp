@@ -6,19 +6,22 @@
 /*   By: kfortin <kfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 21:27:40 by kfortin           #+#    #+#             */
-/*   Updated: 2024/06/02 13:09:14 by kfortin          ###   ########.fr       */
+/*   Updated: 2024/06/05 16:30:22 by kfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CLAPTRAP_H
 # define CLAPTRAP_H
-#include <iostream>
+# include <iostream>
 
 class ClapTrap
 {
     
 public:
+    ClapTrap();
     ClapTrap(const std::string &_name);
+    ClapTrap(const ClapTrap &other);
+    ClapTrap &operator = (const ClapTrap &other);
     ~ClapTrap();
 
     virtual void attack(const std::string &target);

@@ -6,7 +6,7 @@
 /*   By: kfortin <kfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 13:46:50 by kfortin           #+#    #+#             */
-/*   Updated: 2024/06/02 18:42:36 by kfortin          ###   ########.fr       */
+/*   Updated: 2024/06/05 16:38:16 by kfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,15 @@ int main(void)
     Frag.takeDamage(20);
     Frag.beRepaired(10);
     Frag.highFivesGuys();
+
+    std::cout << std::endl;
+
+    FragTrap FragDefault;
+    // FragDefault = Frag;
+    FragDefault.attack("practice target Default");
+    FragDefault.takeDamage(40);
+    FragDefault.beRepaired(20);
+    FragDefault.highFivesGuys();
 
     std::cout << std::endl;
 }

@@ -6,11 +6,19 @@
 /*   By: kfortin <kfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 13:25:00 by kfortin           #+#    #+#             */
-/*   Updated: 2024/06/02 18:43:09 by kfortin          ###   ########.fr       */
+/*   Updated: 2024/06/05 16:35:57 by kfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
+
+FragTrap::FragTrap() : ClapTrap("Default")
+{
+    set_hitPoint(100);
+    set_energyPoint(100);
+    set_attackDamage(30);
+    std::cout << "FragTrap " << get_name() << " constructor called" << std::endl;
+}
 
 FragTrap::FragTrap(const std::string &_name) : ClapTrap(_name)
 {
@@ -54,4 +62,25 @@ void FragTrap::beRepaired(unsigned int amount)
 void    FragTrap::highFivesGuys(void)
 {
     std::cout << "Could you give me a high fives !" << std::endl;
+}
+
+FragTrap::FragTrap(const FragTrap &other) : ClapTrap(other._name)
+{
+    set_hitPoint(other._hitPoint);
+    set_energyPoint(other._energyPoint);
+    set_attackDamage(other._attackDamage);
+    std::cout << "FragTrap " << _name << " Copy constructor called" << std::endl;
+}
+
+FragTrap &FragTrap::operator = (const FragTrap &other)
+{
+    if (this != &other)
+    {
+        _name = other._name;
+        _hitPoint = other._hitPoint;
+        _energyPoint = other._energyPoint;
+        _attackDamage = other._attackDamage;
+    }
+    std::cout << "FragTrap " << _name << " Copy assignment operator called" << std::endl;
+    return *this;
 }
