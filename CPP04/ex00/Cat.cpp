@@ -1,35 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kfortin <kfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/02 19:06:35 by kfortin           #+#    #+#             */
-/*   Updated: 2024/06/05 17:12:35 by kfortin          ###   ########.fr       */
+/*   Created: 2024/06/05 17:13:20 by kfortin           #+#    #+#             */
+/*   Updated: 2024/06/05 17:16:41 by kfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_H
-# define ANIMAL_H
-# include <iostream>
+#include "Cat.hpp"
 
-class Animal
+Cat::Cat() : Animal("Cat")
 {
-    
-public :
-    Animal();
-    Animal(std::string _type);
-    Animal(const Animal &other);
-    Animal &operator = (const Animal &other);
-    ~Animal();
-    
-    std::string get_type();
-    void        set_type(std::string new_type);
-    
-private :
-    std::string _type;
+    std::cout << "Cat " << get_type() << " default constructor called" << std::endl;
+}
 
-};
-
-#endif
+Cat::~Cat()
+{
+    std::cout << "Cat " << get_type() << " Destructor called" << std::endl;
+}
