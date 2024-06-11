@@ -5,7 +5,7 @@ Animal::Animal() : _type("Default")
     std::cout << "Animal Default constructor called" << std::endl;
 }
 
-Animal::Animal(std::string &_type) : _type(_type))
+Animal::Animal(std::string &type) : _type(type)
 {
     std::cout << "Animal " << _type << " Constructor called" << std::endl;
 }
@@ -21,7 +21,7 @@ Animal &Animal::operator = (const Animal &other)
     {
         _type = other._type;
     }
-    std::cout << "Animal " << _name << " Copy assignment operator called" << std::endl;
+    std::cout << "Animal " << _type << " Copy assignment operator called" << std::endl;
     return *this;
 }
 

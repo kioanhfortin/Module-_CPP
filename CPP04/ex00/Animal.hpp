@@ -6,7 +6,7 @@
 /*   By: kfortin <kfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 19:06:35 by kfortin           #+#    #+#             */
-/*   Updated: 2024/06/05 17:12:35 by kfortin          ###   ########.fr       */
+/*   Updated: 2024/06/11 17:38:42 by kfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,15 @@ class Animal
     
 public :
     Animal();
-    Animal(std::string _type);
+    Animal(std::string &_type);
     Animal(const Animal &other);
     Animal &operator = (const Animal &other);
-    ~Animal();
+    virtual ~Animal();
     
     std::string get_type();
     void        set_type(std::string new_type);
     
-private :
+protected :
     std::string _type;
 
 };
