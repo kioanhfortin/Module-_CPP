@@ -6,14 +6,14 @@
 /*   By: kfortin <kfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 12:14:33 by kfortin           #+#    #+#             */
-/*   Updated: 2024/06/05 16:32:13 by kfortin          ###   ########.fr       */
+/*   Updated: 2024/06/11 17:28:37 by kfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
 ScavTrap::ScavTrap() : ClapTrap("Default")
-{
+{ 
     set_hitPoint(100);
     set_energyPoint(50);
     set_attackDamage(20);
