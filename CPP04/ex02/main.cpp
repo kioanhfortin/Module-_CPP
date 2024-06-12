@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kfortin <kfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/05 17:06:49 by kfortin           #+#    #+#             */
-/*   Updated: 2024/06/12 18:49:59 by kfortin          ###   ########.fr       */
+/*   Created: 2024/06/02 19:03:43 by kfortin           #+#    #+#             */
+/*   Updated: 2024/06/12 18:53:42 by kfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_H
-# define CAT_H
-# include "Animal.hpp"
+#include "Animal.hpp"
+#include "Cat.hpp"
+#include "Dog.hpp"
+#include "Brain.hpp"
 
-class Cat : public Animal
+int main()
 {
+    Dog* j = new Dog("doggo");
+    Cat* i = new Cat("meooo");
     
-public :
-    Cat();
-    Cat(const std::string type);
-    Cat(const Cat &other);
-    Cat &operator = (const Cat &other);
-    ~Cat();
+    delete(j);
+    delete(i);
     
-private:
-    
-};
-
-#endif
+    return 0;
+}
