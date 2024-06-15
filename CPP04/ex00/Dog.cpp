@@ -6,7 +6,7 @@
 /*   By: kfortin <kfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 12:57:47 by kfortin           #+#    #+#             */
-/*   Updated: 2024/06/12 18:49:05 by kfortin          ###   ########.fr       */
+/*   Updated: 2024/06/15 12:11:27 by kfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,9 @@ Dog &Dog::operator = (const Dog &other)
 Dog::~Dog()
 {
     std::cout << "Dog " << get_type() << " Destructor called" << std::endl;
+}
+
+void    Dog::makeSound() const
+{
+    std::cout << "WAOOFF " << get_type() << std::endl; 
 }

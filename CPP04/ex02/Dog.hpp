@@ -6,7 +6,7 @@
 /*   By: kfortin <kfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 12:58:28 by kfortin           #+#    #+#             */
-/*   Updated: 2024/06/12 16:34:09 by kfortin          ###   ########.fr       */
+/*   Updated: 2024/06/15 12:50:51 by kfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ public :
     ~Dog();
 
     void makeSound() const;
+    void set_brain(int index, const std::string idea);
+    std::string get_brain(int index) const;
+    
 private :
     Brain* brain;
 };

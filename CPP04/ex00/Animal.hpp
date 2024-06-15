@@ -6,7 +6,7 @@
 /*   By: kfortin <kfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 19:06:35 by kfortin           #+#    #+#             */
-/*   Updated: 2024/06/12 15:21:19 by kfortin          ###   ########.fr       */
+/*   Updated: 2024/06/15 12:10:27 by kfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ public :
     std::string get_type() const;
     void        set_type(std::string new_type);
     
-    void    makeSound() const;
+    virtual void    makeSound() const;
     
 protected :
     std::string _type;

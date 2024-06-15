@@ -6,7 +6,7 @@
 /*   By: kfortin <kfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:13:20 by kfortin           #+#    #+#             */
-/*   Updated: 2024/06/12 18:51:37 by kfortin          ###   ########.fr       */
+/*   Updated: 2024/06/15 12:48:56 by kfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,19 @@ Cat::~Cat()
 {
     delete brain;
     std::cout << "Cat " << get_type() << " Destructor called" << std::endl;
+}
+
+void    Cat::makeSound() const
+{
+    std::cout << "MEOWWW " << get_type() << std::endl; 
+}
+
+void Cat::set_brain(int index, const std::string idea)
+{
+    brain->set_ideas(index, idea);   
+}
+
+std::string Cat::get_brain(int index) const
+{
+    return brain->get_ideas(index);
 }

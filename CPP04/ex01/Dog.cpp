@@ -6,7 +6,7 @@
 /*   By: kfortin <kfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 12:57:47 by kfortin           #+#    #+#             */
-/*   Updated: 2024/06/12 18:51:50 by kfortin          ###   ########.fr       */
+/*   Updated: 2024/06/15 12:43:02 by kfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,19 @@ Dog::~Dog()
 {
     delete brain;
     std::cout << "Dog " << get_type() << " Destructor called" << std::endl;
+}
+
+void    Dog::makeSound() const
+{
+    std::cout << "WAOOFF " << get_type() << std::endl; 
+}
+
+void Dog::set_brain(int index, const std::string idea)
+{
+    brain->set_ideas(index, idea);   
+}
+
+std::string Dog::get_brain(int index) const
+{
+    return brain->get_ideas(index);
 }

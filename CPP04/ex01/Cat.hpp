@@ -6,7 +6,7 @@
 /*   By: kfortin <kfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:06:49 by kfortin           #+#    #+#             */
-/*   Updated: 2024/06/12 18:51:31 by kfortin          ###   ########.fr       */
+/*   Updated: 2024/06/15 12:48:23 by kfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ public :
     Cat &operator = (const Cat &other);
     virtual ~Cat();
     
+    virtual void    makeSound() const;
+    void set_brain(int index, const std::string idea);
+    std::string get_brain(int index) const;
 private:
     Brain* brain;
 };

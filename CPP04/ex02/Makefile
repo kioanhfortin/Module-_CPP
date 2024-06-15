@@ -6,11 +6,11 @@
 #    By: kfortin <kfortin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/02 18:56:04 by kfortin           #+#    #+#              #
-#    Updated: 2024/06/12 15:27:05 by kfortin          ###   ########.fr        #
+#    Updated: 2024/06/15 12:52:20 by kfortin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = brain
+NAME = abstract
 CC = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 

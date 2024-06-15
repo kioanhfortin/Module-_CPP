@@ -42,17 +42,5 @@ void        Animal::set_type(std::string new_type)
 
 void    Animal::makeSound() const
 {
-    std::string tab[2] = {"Cat", "Dog"};
-    std::string sound[2] = {"MEAOWWW", "WOOAAFF"};
-
-    for (int i = 0; i < 2; i++)
-    {
-        if (_type == tab[i])
-        {
-            std::cout << sound[i] << std::endl;
-            return ;
-        }
-    }
-    std::cout << "Brrrbrrr sound of " << get_type() << std::endl; 
-    
+    std::cout << "Brrrbrrr " << get_type() << std::endl; 
 }

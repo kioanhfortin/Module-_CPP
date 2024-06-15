@@ -39,3 +39,8 @@ void        Animal::set_type(std::string new_type)
 {
     _type = new_type;
 }
+
+void    Animal::makeSound() const
+{
+    std::cout << "Brrrbrrr " << get_type() << std::endl; 
+}
