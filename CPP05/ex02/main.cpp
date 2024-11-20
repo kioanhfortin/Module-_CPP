@@ -17,15 +17,12 @@
 
 int main() {
     try {
-        // Créer un bureaucrate avec un grade élevé (pour pouvoir tout exécuter)
         Bureaucrat highRank("HighRankBureaucrat", 1);
 
-        // Créer des formulaires avec des cibles spécifiques
         ShrubberyCreationForm shrubberyForm("Garden");
         RobotomyRequestForm robotomyForm("Alice");
         PresidentialPardonForm pardonForm("Bob");
 
-        // Tester la signature et l'exécution des formulaires
         std::cout << LIME << "\n--- Tentative de signer et exécuter ShrubberyCreationForm ---\n" << WHITE;
         highRank.signForm(shrubberyForm);
         highRank.executeForm(shrubberyForm);
@@ -43,15 +40,13 @@ int main() {
     }
 
     try {
-        // Créer un bureaucrate avec un grade bas
         Bureaucrat lowRank("LowRankBureaucrat", 150);
 
-        // Créer un formulaire
         ShrubberyCreationForm shrubberyForm("Park");
 
         std::cout << LIME << "\n--- Tentative avec un bureaucrate au grade insuffisant ---\n" << WHITE;
-        lowRank.signForm(shrubberyForm);  // Ne devrait pas fonctionner
-        lowRank.executeForm(shrubberyForm);  // Ne devrait pas fonctionner
+        lowRank.signForm(shrubberyForm);
+        lowRank.executeForm(shrubberyForm);
 
     } catch (std::exception &e) {
         std::cerr << "Erreur : " << e.what() << std::endl;

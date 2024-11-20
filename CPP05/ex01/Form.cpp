@@ -22,7 +22,6 @@ Form::Form(const std::string name, unsigned int gradeSign, unsigned int gradeExe
     if (gradeSign > 150 || gradeExec > 150) {
         throw GradeTooLowException();
     }
-    // std::cout << WHITE << "Form " << name_ << " " << gradeSign_ << " " << gradeExec_ << " Constructor called\n" << std::endl;
 }
 
 Form::Form(const Form &other) : name_(other.name_), sign_(other.gradeSign_), gradeSign_(other.gradeSign_), gradeExec_(other.gradeExec_) {}
@@ -58,7 +57,7 @@ void Form::beSigned(Bureaucrat name) {
     if (name.get_grade() > get_gradeSign())
         throw GradeTooLowException();
     sign_ = true;
-}//check if grade bureau upper than the gradeform
+}
 
 const char *Form::GradeTooHighException::what() const throw() {
     return "Grade too High !";

@@ -6,7 +6,7 @@
 /*   By: kfortin <kfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 18:17:45 by kfortin           #+#    #+#             */
-/*   Updated: 2024/11/19 19:26:18 by kfortin          ###   ########.fr       */
+/*   Updated: 2024/11/19 21:39:33 by kfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,12 +74,21 @@ std::ostream &operator << (std::ostream &out, const Bureaucrat &other) {
     return out;
 }
 
-void Bureaucrat::signForm(Form &form)
+void Bureaucrat::signForm(AForm &form)
 {
     try {
         form.beSigned(*this);
-        std::cout  << PINK << get_name() << " signed " << form.get_name() << std::endl;
+        std::cout  << PINK << get_name() << " signed " << form.get_name() << WHITE << std::endl;
     } catch (const std::exception &e) {
-        std::cout  << PINK << get_name() << " couldn't sign " << form.get_name() << " because "  << e.what() << "." << std::endl;
+        std::cout  << PINK << get_name() << " couldn't sign " << form.get_name() << " because "  << e.what() << WHITE << std::endl;
+    }
+}
+
+void Bureaucrat::executeForm(AForm const &form) {
+    try {
+        form.execute(*this);
+        std::cout  << PINK << get_name() << " executed " << form.get_name() << WHITE << std::endl;
+    } catch (const std::exception &e) {
+        std::cout  << PINK << get_name() << " couldn't executed " << form.get_name() << " because "  << e.what() << WHITE << std::endl;
     }
 }

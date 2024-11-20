@@ -32,7 +32,7 @@ class Form
         bool        isSigned() const;
         unsigned int get_gradeSign() const;
         unsigned int get_gradeExec() const;
-        void beSigned(Bureaucrat name); //check if grade bureau upper than the gradeform
+        void beSigned(Bureaucrat name);
         void signForm(Bureaucrat name);
 
         class GradeTooHighException : public std::exception {
