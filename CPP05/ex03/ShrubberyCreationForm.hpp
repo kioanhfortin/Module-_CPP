@@ -6,7 +6,7 @@
 /*   By: kfortin <kfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 20:05:24 by kfortin           #+#    #+#             */
-/*   Updated: 2024/11/20 10:38:17 by kfortin          ###   ########.fr       */
+/*   Updated: 2024/11/20 11:33:44 by kfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@
 
 class ShrubberyCreationForm : public AForm {
     public :
-        ShrubberyCreationForm();
         ShrubberyCreationForm(const std::string &target);
         ShrubberyCreationForm(const ShrubberyCreationForm &other);
         ShrubberyCreationForm &operator = (const ShrubberyCreationForm &other);
@@ -34,6 +33,7 @@ class ShrubberyCreationForm : public AForm {
     private :
         const std::string target_;
         
+        ShrubberyCreationForm();
 };
 
 #endif

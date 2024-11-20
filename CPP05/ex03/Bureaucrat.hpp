@@ -6,7 +6,7 @@
 /*   By: kfortin <kfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 18:44:19 by kfortin           #+#    #+#             */
-/*   Updated: 2024/11/20 10:26:33 by kfortin          ###   ########.fr       */
+/*   Updated: 2024/11/20 11:21:26 by kfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ class AForm;
 class Bureaucrat
 {
     public :
-        Bureaucrat();
         Bureaucrat(const std::string name, unsigned int grade);
         Bureaucrat(const Bureaucrat &other);
         Bureaucrat &operator = (const Bureaucrat &other);
@@ -55,6 +54,7 @@ class Bureaucrat
         const std::string name_;
         unsigned int      grade_;
 
+        Bureaucrat();
 };
 
 std::ostream &operator << (std::ostream &out, const Bureaucrat &other);

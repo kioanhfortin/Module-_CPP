@@ -6,7 +6,7 @@
 /*   By: kfortin <kfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 16:51:38 by kfortin           #+#    #+#             */
-/*   Updated: 2024/11/19 21:05:04 by kfortin          ###   ########.fr       */
+/*   Updated: 2024/11/20 11:26:08 by kfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ class Bureaucrat;
 class Form
 {
     public :
-        Form();
         Form(const std::string name, unsigned int gradeSign, unsigned int gradeExec);
         Form(const Form &other);
         Form &operator = (const Form &other);
@@ -50,6 +49,7 @@ class Form
         unsigned int            gradeSign_;
         unsigned int            gradeExec_;
 
+        Form();
 };
 
 std::ostream &operator << (std::ostream &out, const Form &form);
