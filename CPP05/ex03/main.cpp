@@ -6,43 +6,47 @@
 /*   By: kfortin <kfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 18:59:21 by kfortin           #+#    #+#             */
-/*   Updated: 2024/11/19 21:36:56 by kfortin          ###   ########.fr       */
+/*   Updated: 2024/11/20 10:46:29 by kfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include "Intern.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "PresidentialPardonForm.hpp"
 #include "AForm.hpp"
+#include "Bureaucrat.hpp"
+#include "Intern.hpp"
 
 int main() {
     Intern someRandomIntern;
 
-    AForm* rrf; // RobotomyRequestForm
-    AForm* scf; // ShrubberyCreationForm
-    AForm* ppf; // PresidentialPardonForm
-    AForm* unknown; // Formulaire inconnu
+    AForm* RobotomyRequestForm;
+    AForm* ShrubberyCreationForm;
+    AForm* PresidentialPardonForm;
+    AForm* unknown;
 
-    rrf = someRandomIntern.makeForm("robotomy request", "Bender");
-    if (rrf) {
-        std::cout << "Form successfully created: " << rrf->get_name() << std::endl;
-        delete rrf;
+    RobotomyRequestForm = someRandomIntern.makeForm("robotomy request", "Bender");
+    if (RobotomyRequestForm) {
+        std::cout << PINK << "Form successfully created: " << RobotomyRequestForm->get_name() << WHITE << std::endl;
+        delete RobotomyRequestForm;
     }
 
-    scf = someRandomIntern.makeForm("shrubbery creation", "Garden");
-    if (scf) {
-        std::cout << "Form successfully created: " << scf->get_name() << std::endl;
-        delete scf;
+    ShrubberyCreationForm = someRandomIntern.makeForm("shrubbery creation", "Garden");
+    if (ShrubberyCreationForm) {
+        std::cout << PINK << "Form successfully created: " << ShrubberyCreationForm->get_name() << WHITE << std::endl;
+        delete ShrubberyCreationForm;
     }
 
-    ppf = someRandomIntern.makeForm("presidential pardon", "Bob");
-    if (ppf) {
-        std::cout << "Form successfully created: " << ppf->get_name() << std::endl;
-        delete ppf;
+    PresidentialPardonForm = someRandomIntern.makeForm("presidential pardon", "Bob");
+    if (PresidentialPardonForm) {
+        std::cout << PINK << "Form successfully created: " << PresidentialPardonForm->get_name() << WHITE << std::endl;
+        delete PresidentialPardonForm;
     }
 
     unknown = someRandomIntern.makeForm("unknown form", "Target");
     if (!unknown) {
-        std::cerr << "Form creation failed for unknown form." << std::endl;
+        std::cerr << PINK << "Form creation failed for unknown form." << WHITE << std::endl;
     }
 
     return 0;

@@ -2,7 +2,13 @@
 #define INTERN_HPP
 
 #include "AForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "PresidentialPardonForm.hpp"
 #include <string>
+
+#define PURPLE      "\x1B[35m"
+#define WHITE       "\033[37m"
 
 class Intern
 {

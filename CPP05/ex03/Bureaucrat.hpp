@@ -6,7 +6,7 @@
 /*   By: kfortin <kfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 18:44:19 by kfortin           #+#    #+#             */
-/*   Updated: 2024/11/19 21:22:11 by kfortin          ###   ########.fr       */
+/*   Updated: 2024/11/20 10:26:33 by kfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,35 +26,34 @@ class AForm;
 
 class Bureaucrat
 {
+    public :
+        Bureaucrat();
+        Bureaucrat(const std::string name, unsigned int grade);
+        Bureaucrat(const Bureaucrat &other);
+        Bureaucrat &operator = (const Bureaucrat &other);
+        ~Bureaucrat();
 
-public :
-    Bureaucrat();
-    Bureaucrat(const std::string name, unsigned int grade);
-    Bureaucrat(const Bureaucrat &other);
-    Bureaucrat &operator = (const Bureaucrat &other);
-    ~Bureaucrat();
-
-    std::string get_name() const;
-    unsigned int get_grade() const;
-    void incrementeGrade();
-    void decrementeGrade();
-    
-    void signForm(AForm &form);
-    void executeForm(AForm const &form);
-    
-    class GradeTooHighException : public std::exception {
-        public:
-            const char *what(void) const throw();
-    };
-    
-    class GradeTooLowException : public std::exception {
-        public:
-            const char *what(void) const throw();
-    };
-    
-private :
-    const std::string name_;
-    unsigned int      grade_;
+        std::string get_name() const;
+        unsigned int get_grade() const;
+        void incrementeGrade();
+        void decrementeGrade();
+        
+        void signForm(AForm &form);
+        void executeForm(AForm const &form);
+        
+        class GradeTooHighException : public std::exception {
+            public:
+                const char *what(void) const throw();
+        };
+        
+        class GradeTooLowException : public std::exception {
+            public:
+                const char *what(void) const throw();
+        };
+        
+    private :
+        const std::string name_;
+        unsigned int      grade_;
 
 };
 

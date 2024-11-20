@@ -6,7 +6,7 @@
 /*   By: kfortin <kfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 16:51:38 by kfortin           #+#    #+#             */
-/*   Updated: 2024/11/19 21:20:08 by kfortin          ###   ########.fr       */
+/*   Updated: 2024/11/20 10:40:10 by kfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ class Bureaucrat;
 class AForm
 {
     public :
-        AForm();
         AForm(const std::string name, unsigned int gradeSign, unsigned int gradeExec);
         AForm(const AForm &other);
         AForm &operator = (const AForm &other);
@@ -32,6 +31,7 @@ class AForm
         bool        isSigned() const;
         unsigned int get_gradeSign() const;
         unsigned int get_gradeExec() const;
+        
         void beSigned(Bureaucrat name);
         void signAForm(Bureaucrat name);
 
@@ -58,6 +58,7 @@ class AForm
         unsigned int            gradeSign_;
         unsigned int            gradeExec_;
 
+        AForm();
 };
 
 std::ostream &operator << (std::ostream &out, const AForm &AForm);
