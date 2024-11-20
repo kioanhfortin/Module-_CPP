@@ -5,15 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kfortin <kfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/19 18:17:55 by kfortin           #+#    #+#             */
-/*   Updated: 2024/11/19 18:26:54 by kfortin          ###   ########.fr       */
+/*   Created: 2024/11/19 18:17:45 by kfortin           #+#    #+#             */
+/*   Updated: 2024/11/19 19:26:18 by kfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat() : name_("Default"), grade_(150) {
-    std::cout << WHITE << "Bureaucrat " << name_ << " " << grade_ << " Default Constructor called\n" << std::endl;
+    // std::cout << WHITE << "Bureaucrat " << name_ << " " << grade_ << " Default Constructor called\n" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const std::string name, unsigned int grade) : name_(name), grade_(grade) {
@@ -23,11 +23,11 @@ Bureaucrat::Bureaucrat(const std::string name, unsigned int grade) : name_(name)
     if (grade_ > 150) {
         throw GradeTooLowException();
     }
-    std::cout << WHITE << "Bureaucrat " << name_ << " " << grade_ << " Constructor called\n" << std::endl;
+    // std::cout << WHITE << "Bureaucrat " << name_ << " " << grade_ << " Constructor called\n" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &other) : name_(other.name_), grade_(other.grade_) {
-    std::cout << WHITE << "Bureaucrat " << name_ << " " << grade_ << " Copy constructor called\n" << std::endl;
+    // std::cout << WHITE << "Bureaucrat " << name_ << " " << grade_ << " Copy constructor called\n" << std::endl;
 }
 
 Bureaucrat &Bureaucrat::operator = (const Bureaucrat &other) {
@@ -35,7 +35,7 @@ Bureaucrat &Bureaucrat::operator = (const Bureaucrat &other) {
     {
         grade_ = other.grade_;
     }
-    std::cout << WHITE << "Bureaucrat " << name_ << " " << grade_ << "Copy assignment operator called\n" << std::endl;
+    // std::cout << WHITE << "Bureaucrat " << name_ << " " << grade_ << "Copy assignment operator called\n" << std::endl;
     return *this;
 }
 
@@ -78,4 +78,14 @@ const char *Bureaucrat::GradeTooLowException::what() const throw() {
 std::ostream &operator << (std::ostream &out, const Bureaucrat &other) {
     std::cout  << WHITE << other.get_name() << ", bureaucrat grade " << other.get_grade() << "." << std::endl;
     return out;
+}
+
+void Bureaucrat::signForm(Form &form)
+{
+    try {
+        form.beSigned(*this);
+        std::cout  << PINK << get_name() << " signed " << form.get_name() << std::endl;
+    } catch (const std::exception &e) {
+        std::cout  << PINK << get_name() << " couldn't sign " << form.get_name() << " because "  << e.what() << "." << std::endl;
+    }
 }

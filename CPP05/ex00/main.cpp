@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kfortin <kfortin@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/19 18:18:05 by kfortin           #+#    #+#             */
+/*   Updated: 2024/11/19 18:18:27 by kfortin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Bureaucrat.hpp"
 
 int main() {
     try {
-        std::cout << "Bureaucrat Tom 1 Constructor called" << std::endl;
+        std::cout << WHITE << "Bureaucrat Tom 1 Constructor called" << std::endl;
         Bureaucrat tom("Tom", 1);
 
-        std::cout << "Bureaucrat Jerry 150 Constructor called" << std::endl;
+        std::cout << WHITE << "Bureaucrat Jerry 150 Constructor called" << std::endl;
         Bureaucrat jerry("Jerry", 150);
 
         std::cout << tom << std::endl;

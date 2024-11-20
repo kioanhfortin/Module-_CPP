@@ -6,13 +6,14 @@
 /*   By: kfortin <kfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 18:44:19 by kfortin           #+#    #+#             */
-/*   Updated: 2024/11/19 21:05:33 by kfortin          ###   ########.fr       */
+/*   Updated: 2024/11/19 21:05:38 by kfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUREAUCRAT_HPP
 #define BUREAUCRAT_HPP
 
+#include "Form.hpp"
 # include <iostream>
 # include <string>
 
@@ -20,6 +21,8 @@
 #define LIME        "\033[38;5;120m"
 #define PINK        "\033[38;5;198m"
 #define WHITE       "\033[37m"
+
+class Form;
 
 class Bureaucrat
 {
@@ -36,6 +39,8 @@ public :
     void incrementeGrade();
     void decrementeGrade();
     
+    void signForm(Form &form);
+
     class GradeTooHighException : public std::exception {
         public:
             const char *what(void) const throw();
