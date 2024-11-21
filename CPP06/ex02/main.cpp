@@ -1,66 +1,53 @@
 #include "base.hpp"
 #include <cstdlib>
 #include <ctime>
-
-Base *generate(void) {
-    std::srand(std::time(NULL));
-    int val = rand() % 3;
-
-    switch (val) {
-        case 0:
-            std::cout << "Generated: A" << std::endl;
-            return new A();
-        case 1:
-            std::cout << "Generated: B" << std::endl;
-            return new B();
-        case 2:
-            std::cout << "Generated: C" << std::endl;
-            return new C();
-        default:
-            return NULL;
-    }
-}
-
-void identify(Base *p) {
-    if (dynamic_cast<A*>(p)) { std::cout << 'A' << std::endl; }
-    else if (dynamic_cast<B*>(p)) { std::cout << 'B' << std::endl; }
-    else if (dynamic_cast<C*>(p)) { std::cout << 'C' << std::endl; }
-    else { std::cout << "Unknown Type" << std::endl; }
-}
-
-void identify(Base &p) {
-    try {
-        dynamic_cast<A&>(p);
-        std::cout << 'A' << std::endl;
-        return;
-    } catch (std::bad_cast&) {}
-
-    try {
-        dynamic_cast<B&>(p);
-        std::cout << 'B' << std::endl;
-        return;
-    } catch (std::bad_cast&) {}
-
-    try {
-        dynamic_cast<C&>(p);
-        std::cout << 'C' << std::endl;
-        return;
-    } catch (std::bad_cast&) {}
-
-    std::cout << "Unknown Type" << std::endl;
-}
+#include <vector>
 
 int main()
 {
-    Base *base = generate();
 
-    std::cout << LIME << "Identification by ptr:" << std::endl;
-    identify(*base);
+    std::cout << WHITE << "---- TEST : Generate randomly and identificate ----" << WHITE << std::endl;
+    for (size_t i = 0; i < 5; i++) {
+        Base *base = generate();
 
-    std::cout << LIME << "Identification by adr:" << std::endl;
-    identify(&base);
+        std::cout << LIME << "Indentification by ptr:" << WHITE << std::endl;
+        identify(base);
 
-    delete(base);
+        std::cout << LIME << "Identification by adr:" << WHITE << std::endl;
+        identify(*base);
+        
+        delete(base);
+        std::cout << std::endl;
+    }
+    
+    std::cout << WHITE << "---- TEST : Indentificate a nullptr ----" << WHITE << std::endl;
+    Base *base1 = nullptr;
+    std::cout << LIME << "Identification by ptr:" << WHITE << std::endl;
+    identify(base1);
+    delete base1;
+    std::cout << std::endl;
+
+    std::cout << WHITE << "---- TEST : Mixed Object ----" << WHITE << std::endl;
+    std::vector<Base*> object;
+    object.push_back(new A());
+    object.push_back(new B());
+    object.push_back(new C());
+    object.push_back(new B());
+    object.push_back(new C());
+
+    int count = 1;
+    for (size_t i = 0; i < 5; i++) {
+        Base *obj = object[i];
+        std::cout << LIME << "Object " << count << " :" << WHITE << std::endl;
+        identify(obj);
+
+        std::cout << LIME << "Object " << count << " :" << WHITE << std::endl;
+        identify(*obj);
+        count++;
+    }
+    for (size_t i = 0; i < 5; i++) {
+        delete object[i];
+    }
 
     return 0;
 }
