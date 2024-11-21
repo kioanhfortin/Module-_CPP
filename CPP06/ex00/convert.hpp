@@ -9,7 +9,7 @@
 #define PINK        "\033[38;5;198m"
 #define WHITE       "\033[37m"
 
-class Convert
+struct Convert
 {
     public :
         static void detectType(const std::string num);
