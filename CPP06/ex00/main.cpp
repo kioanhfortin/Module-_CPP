@@ -8,4 +8,6 @@ int main(int argc, char **argv)
     }
     else
         std::cout << "Error: ./conver <number>" << std::endl;
+    
+    return 0;
 }
