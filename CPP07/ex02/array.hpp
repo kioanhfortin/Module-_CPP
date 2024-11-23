@@ -29,7 +29,7 @@ public :
         }
     }
 
-    T &operator = (const T &other) {
+    Array &operator = (const Array &other) {
         if (this != &other) {
             delete[] data;
             size_ = other.size_;
