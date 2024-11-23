@@ -10,7 +10,7 @@
 #define PINK        "\033[38;5;198m"
 #define WHITE       "\033[37m"
 
-class NothingFindException : public std::exception {
+struct NothingFindException : public std::exception {
     public :
         const char *what(void) const throw() {
             return "No occurence found";
