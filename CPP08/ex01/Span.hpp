@@ -3,6 +3,11 @@
 
 #include <iostream>
 #include <vector>
+#include <algorithm>
+
+#define LIME        "\033[38;5;120m"
+#define PINK        "\033[38;5;198m"
+#define WHITE       "\033[37m"
 
 class Span {
 
@@ -10,29 +15,43 @@ class Span {
         Span(unsigned int n);
         Span(const Span &other);
         Span &operator = (const Span &other);
-        ~Spen();
+        ~Span();
 
-        void addNumber(size_t nb); // check if doublon already store
+        template <typename T>
+        
+        typename T::iterator findDoublon(T &type, int n)  {
+            typename T::iterator it = std::find(type.begin(), type.end(), n);
+            if (it == type.end())
+                return it;
+            throw NbDoublon();
+        };
+
+        void addNumber(unsigned int nb); // check if doublon already store
         size_t shortestSpan(); // check if storage empty ou un 
-        size_t longestSpan(); // check if storage empty ou un 
+        size_t longestSpan(); // check if storage empty ou un    
 
-        struct NoSpan : public std::exception {
+        std::vector<int> get_tab() const { return tab; }
+        // unsigned int     get_size() const { return N; }
+
+        class NoSpan : public std::exception {
             public : 
                 const char * what() throw() {
                     return "Not enough occurence to hane a span";
                 }
-        }
+        };
 
-        struct NbDoublon : public std::exception {
+        class NbDoublon : public std::exception {
             public : 
                 const char * what() throw() {
                     return "Not enough occurence to hane a span";
                 }
-        }
+        };
     private :
         unsigned int N;
-        vector<int> tab;
+        std::vector<int> tab;
         Span();
 };
+
+std::ostream &operator << (std::ostream &out, const Span &other);
 
 #endif

@@ -1,48 +1,60 @@
-#include "span.hpp"
+#include "Span.hpp"
 
-Span::Span() : N(0), tab[0](nullptr) {}
+Span::Span() : N(0), tab() {}
 
-Span::Span(unsigned int n) : N(n) {
-    for (unsigned int i = 0; i < N, i++)
-        tab[i] = nullptr;
-}
+Span::Span(unsigned int n) : N(n), tab(n, 0) {}
 
 Span::Span(const Span &other) : N(other.N) {
-    for (unsigned int i = 0; i < N, i++)
+    for (unsigned int i = 0; i < N; i++)
         tab[i] = other.tab[i];
 }
 
-Span &operator = (const Span &other) {
+Span &Span::operator = (const Span &other) {
       if (this != &other) {
         N = other.N;
-        for (unsigned int i = 0; i < N, i++)
+        for (unsigned int i = 0; i < other.N; i++)
             tab[i] = other.tab[i];
     }
     return *this;
 }
-Span~Spen() {}
+Span::~Span() { 
+    // for (size_t i = 0; i < N; i++) {
+    //     delete tab[i];
+    // }
+}
 
-template <typename T>
-typename T::iterator findDoublon(T &type, int n)  {
-    typename T::iterator it = std::find(type.begin(), type.end(), n);
-    if (it == type.end())
-        return it;
-    throw NbDoublon;
-};
-
-void addNumber(size_t nb) {
-    findDoublon(nb);
+void Span::addNumber(unsigned int nb) {
+    Span::findDoublon(tab, nb);
     tab.push_back(nb);
 }
 
-size_t shortestSpan() {
+size_t Span::shortestSpan() {
     if (N == 1 || N == 0)
-        throw NoSpan;
-    size_t minSpan = 0;
+        throw NoSpan();
+    int minSpan = 0;
     for (unsigned int i = 0; i < N; i++) {
         if ((tab[i] - tab[i + 1]) < minSpan)
             minSpan = (tab[i] - tab[i + 1]);
     }
     return minSpan;
-} // check if storage empty ou un 
-size_t longestSpan(); 
+}
+
+size_t Span::longestSpan() {
+     if (N == 1 || N == 0)
+        throw NoSpan();
+    int maxSpan = 0;
+    for (unsigned int i = 0; i < N; i++) {
+        if ((tab[i] - tab[i + 1]) > maxSpan)
+            maxSpan = (tab[i] - tab[i + 1]);
+    }
+    return maxSpan;
+}
+
+
+std::ostream &operator << (std::ostream &out, const Span &other) {
+    std::vector<int> tab = other.get_tab();
+    for (size_t i = 0; i < tab.size(); i++) {
+        out << LIME << "Tab [" << i << "] : " << PINK << tab[i] << WHITE << "\n";
+    }
+    return out;
+}
