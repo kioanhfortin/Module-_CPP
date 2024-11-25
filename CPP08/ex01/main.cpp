@@ -2,45 +2,50 @@
 
 int main() {
 
-    Span span1(2);
+    Span span1(6);
 
-    span1.addNumber(50);
+    span1.addNumber(1);
+    span1.addNumber(3);
     span1.addNumber(5);
-    span1.addNumber(10);
-    span1.addNumber(20);
-    span1.addNumber(26);
+    span1.addNumber(6);
+    span1.addNumber(0);
 
     std::cout << span1 << std::endl;
 
-// try {
+    try {
 
-//     std::cout << WHITE << "---- TEST : DOUBLON ----" << std::endl;
-//     try {
-//         span1.addNumber(26);
+        std::cout << WHITE << "---- TEST : DOUBLON ----" << std::endl;
+        try {
+            span1.addNumber(5);
 
-//     }   catch ( std::exception &e ) {
-//         std::cerr << PINK << e.what() << WHITE << std::endl;
-//     }
+        } catch ( Span::NbDoublon &e ) {
+            std::cerr << PINK << e.what() << WHITE << std::endl;
+        } 
+   
+        std::cout << std::endl;
 
-//     std::cout << WHITE << "---- TEST : SHORTEST SPAN ----" << std::endl;
-//     try {
-//         size_t shortest = span1.shortestSpan();
-//         std::cout << LIME << "Shortest span: " << PINK << shortest << std::endl;
-    
-//     }   catch ( std::exception &e ) {
-//         std::cerr << PINK << e.what() << WHITE << std::endl;
-//     }
+        std::cout << WHITE << "---- TEST : SHORTEST SPAN ----" << std::endl;
+        try {
+            size_t shortest = span1.shortestSpan();
+            std::cout << LIME << "Shortest span: " << PINK << shortest << std::endl;
+        
+        }   catch ( std::exception &e ) {
+            std::cerr << PINK << e.what() << WHITE << std::endl;
+        }
+        std::cout << std::endl;
 
-//      std::cout << WHITE << "---- TEST : LONGEST SPAN ----" << std::endl;
-//     try {
-//         size_t longest = span1.longestSpan();
-//         std::cout << LIME << "Shortest span: " << PINK << longest << std::endl;
-    
-//     }   catch ( std::exception &e ) {
-//         std::cerr << PINK << e.what() << WHITE << std::endl;
-//     }
-// } catch (const std::exception &e) {
-//     std::cerr << PINK << e.what() << WHITE << std::endl;
-// }
-//     return 0;
+        std::cout << WHITE << "---- TEST : LONGEST SPAN ----" << std::endl;
+        try {
+            size_t longest = span1.longestSpan();
+            std::cout << LIME << "Shortest span: " << PINK << longest << std::endl;
+        
+        }   catch ( std::exception &e ) {
+            std::cerr << PINK << e.what() << WHITE << std::endl;
+        }
+        std::cout << std::endl;
+
+    } catch (const std::exception &e) {
+        std::cerr << PINK << e.what() << WHITE << std::endl;
+    }
+        return 0;
 }
