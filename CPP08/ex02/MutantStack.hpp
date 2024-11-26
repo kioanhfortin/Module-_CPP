@@ -1,7 +1,7 @@
 #ifndef MUTANTSTACK_HPP
 #define MUTANTSTACK_HPP
 
-class MutantStack : {
+class MutantStack : public std::stack<T> {
     public :
         MutantStack();
         MutantStack(size_t size);
@@ -10,13 +10,14 @@ class MutantStack : {
         ~MutantStack();
 
         void        push(int n);
+        typename T  pop();
         typename T  top();
         typename T  size();
         std::stack *begin();
         std::stack *end();
 
     private :
-        std::stack stack;
+        std::vector data;
         size_t size_;
 };
 
