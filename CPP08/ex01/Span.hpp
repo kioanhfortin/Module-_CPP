@@ -18,18 +18,9 @@ class Span {
         Span &operator = (const Span &other);
         ~Span();
 
-        // template <typename T>
-        
-        // typename T::iterator findDoublon(T &type, int n)  {
-        //     typename T::iterator it = std::find(type.begin(), type.end(), n);
-        //     if (it == type.end())
-        //         return it;
-        //     throw NbDoublon();
-        // };
-
-        void addNumber(int nb); // check if doublon already store
-        int shortestSpan() const; // check if storage empty ou un 
-        int longestSpan() const; // check if storage empty ou un    
+        void addNumber(int nb);
+        int shortestSpan() const;
+        int longestSpan() const;
 
         std::vector<int> get_tab() const { return tab; }
         unsigned int     get_size() const { return N; }

@@ -1,11 +1,11 @@
-NAME = MutantStack
+NAME = mutantstack
 
 CC = c++
 
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRCS = main.cpp
-OBJS = $(SCRS:.c=.o)
+OBJS = $(SRCS:.cpp=.o)
 
 RM = rm -f
 

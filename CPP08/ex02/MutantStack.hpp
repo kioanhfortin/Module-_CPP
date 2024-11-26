@@ -1,24 +1,39 @@
 #ifndef MUTANTSTACK_HPP
 #define MUTANTSTACK_HPP
 
+#include <stack>
+#include <deque>
+#include <iterator>
+#include <iostream>
+
+#define LIME        "\033[38;5;120m"
+#define PINK        "\033[38;5;198m"
+#define WHITE       "\033[37m"
+
+template <typename T>
+
 class MutantStack : public std::stack<T> {
     public :
-        MutantStack();
-        MutantStack(size_t size);
-        MutantStack(const MutantStack &other);
-        MutantStack &operator = (const MutantStack &other);
-        ~MutantStack();
+        MutantStack() {}
+        MutantStack(const MutantStack &other) : std::stack<T>(other) {}
+        MutantStack &operator = (const MutantStack &other) {
+            if (this != &other) {
+                std::stack<T>::operator = (other);
+            }
+            return *this;
+        }
+        ~MutantStack() {}
 
-        void        push(int n);
-        typename T  pop();
-        typename T  top();
-        typename T  size();
-        std::stack *begin();
-        std::stack *end();
+        typedef typename std::deque<T>::iterator iterator;
+        typedef typename std::deque<T>::const_iterator const_iterator;
+
+        iterator begin() { return this->c.begin(); }
+        iterator end() { return this->c.end(); }
+        const_iterator begin() const { return this->c.begin(); }
+        const_iterator end() const { return this->c.end(); }
 
     private :
-        std::vector data;
-        size_t size_;
+
 };
 
 #endif
