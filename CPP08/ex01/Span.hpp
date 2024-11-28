@@ -27,16 +27,12 @@ class Span {
 
         class NoSpan : public std::exception {
             public : 
-                const char * what() throw() {
-                    return "Not enough occurence to hane a span";
-                }
+                const char * what() const throw();
         };
 
         class NbDoublon : public std::exception {
             public : 
-                const char * what() throw() {
-                    return "This occurence is double";
-                }
+                const char * what() const throw();
         };
     private :
         unsigned int N;

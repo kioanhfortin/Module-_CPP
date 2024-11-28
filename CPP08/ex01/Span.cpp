@@ -46,11 +46,18 @@ int Span::longestSpan() const {
     return maxSpan;
 }
 
-
 std::ostream &operator << (std::ostream &out, const Span &other) {
     std::vector<int> tab = other.get_tab();
     for (unsigned int i = 0; i < tab.size(); i++) {
         out << LIME << "Tab [" << i << "] : " << PINK << tab[i] << WHITE << "\n";
     }
     return out;
+}
+
+const char *Span::NoSpan::what() const throw() {
+    return "Not enough occurence to hane a span";
+}
+
+const char *Span::NbDoublon::what() const throw() {
+    return "This occurence is double";
 }
