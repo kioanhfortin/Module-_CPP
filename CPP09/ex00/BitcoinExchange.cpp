@@ -1,5 +1,9 @@
 #include "BitcoinExchange.hpp"
 
+const std::multimap<std::string, std::string> &BitcoinExchange::getInput() const {
+    return inputStr;
+}
+
 std::string cleanSpace(std::string key) {
     if (!key.empty()) {
         key.erase(0, key.find_first_not_of(" \t"));
@@ -11,7 +15,7 @@ std::string cleanSpace(std::string key) {
     return key;
 }
 
-bool BitcoinExchange::checkValidKey(std::string key) {
+bool checkValidKey(std::string key) {
     if (key.size() != 10 || key[4] != '-' || key[7] != '-') {
         return false;
     }
@@ -48,24 +52,92 @@ bool BitcoinExchange::loadCSV(const std::string& filename, std::string sep, bool
         std::stringstream lineStream(line);
         std::string key;
         std::string valueStr;
-        float value;
-        if(std::getline(lineStream, key, sep[0]) && std::getline(lineStream, valueStr)) {
+        if (std::getline(lineStream, key, sep[0]) && std::getline(lineStream, valueStr)) {
             if (skipe == true) {
                 key = cleanSpace(key);
                 valueStr = cleanSpace(valueStr);
             }
-            try {
-                value = std::stof(valueStr);
-                input[key] = value;
-            } catch (const std::invalid_argument &e) {
-                std::cerr << "Invalid value for key:"<< key << " | " << valueStr <<std::endl;
-            }
+            inputStr.insert(std::make_pair(key, valueStr));
+        } else {
+            inputStr.insert(std::make_pair(line, ""));
         }
     }
     file.close();
     return true;
 }
 
-const std::map<std::string, float> &BitcoinExchange::getInput() const {
-    return input;
+int convertDateToInt(const std::string &date) {
+    std::string intDate = date;
+    intDate.erase(std::remove(intDate.begin(), intDate.end(), '-'), intDate.end());
+    return std::stoi(intDate);
+}
+
+bool checkClosest(const std::string &inputDate, std::map<std::string, std::string>::const_iterator previousIt, std::map<std::string, std::string>::const_iterator rateIt) {
+    int inputDateInt = convertDateToInt(inputDate);
+    int prevDateInt = convertDateToInt(previousIt->first);
+    int nextDateInt = convertDateToInt(rateIt->first);
+    
+    int diffPrevious = std::abs(inputDateInt - prevDateInt);
+    int diffNext = std::abs(nextDateInt - inputDateInt);
+    if (diffPrevious <= diffNext) {
+        return true;
+    }
+    return false;
+}
+
+void BitcoinExchange::findRate(BitcoinExchange input, BitcoinExchange bitex) {
+     for (std::multimap<std::string, std::string>::const_iterator it = input.getInput().begin(); it != input.getInput().end(); ++it) {
+        const std::string &inputDate = it->first;
+        if (!checkValidKey(inputDate)) {
+            std::cout << "Error: bad input => " << inputDate << std::endl;
+            continue;
+        }
+        const std::string &inputValueStr = it->second;
+        if (std::stod(inputValueStr) > std::numeric_limits<int>::max()) {
+            std::cout << "Error: too large a number." << std::endl;
+            continue;
+        }
+        
+        float inputValue;
+        try {
+            inputValue = std::stof(inputValueStr);
+        } catch (const std::invalid_argument &) {
+            std::cerr << "Error: invalid number format => " << inputValueStr << std::endl;
+            continue;
+        } catch (const std::out_of_range &) {
+            std::cerr << "Error: number out of range => " << inputValueStr << std::endl;
+            continue;
+        }
+        if (inputValue < 0) {
+            std::cout << "Error: not a positive number." << std::endl;
+            continue;
+        }
+
+        std::map<std::string, std::string>::const_iterator rateIt = bitex.getInput().lower_bound(inputDate);
+        if (rateIt == bitex.getInput().end()) {
+            --rateIt;
+        } else if (rateIt->first != inputDate) {
+            std::map<std::string, std::string>::const_iterator previousIt = rateIt;
+            if(previousIt != bitex.getInput().begin())
+                --previousIt;
+            if (previousIt != bitex.getInput().end()) {
+                if (checkClosest(inputDate, previousIt, rateIt)) {
+                    rateIt = previousIt;
+                }
+            }
+        }
+        float rate;
+        try {
+            rate = std::stof(rateIt->second);
+        } catch (const std::invalid_argument &) {
+            std::cerr << "Error: invalid exchange rate for date => " << rateIt->first << std::endl;
+            continue;
+        } catch (const std::out_of_range &) {
+            std::cerr << "Error: exchange rate out of range for date => " << rateIt->first << std::endl;
+            continue;
+        }
+        std::cout << std::fixed << std::setprecision(2);
+        std::cout << inputDate << " => " << inputValue  << " = " << inputValue * rate << std::endl;
+
+    }
 }

@@ -5,6 +5,7 @@ Base::Base() {}
 Base::~Base() {}
 
 Base *generate(void) {
+    std::srand(std::time(nullptr));
     int val = rand() % 3;
 
     switch (val) {

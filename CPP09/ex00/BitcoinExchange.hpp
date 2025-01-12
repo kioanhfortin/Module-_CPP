@@ -11,11 +11,13 @@ class BitcoinExchange {
     public:
         BitcoinExchange() {}
         ~BitcoinExchange() {}
-        const std::map<std::string, float> &getInput() const;
-        bool loadCSV(const std::string& filename, const std::string& sep, bool skipHeader);
-        bool checkValidKey(std::string key);
+        const std::multimap<std::string, std::string> &getInput() const;
+        bool loadCSV(const std::string& filename, std::string sep, bool skipe);
+        void findRate(BitcoinExchange input, BitcoinExchange bitex);
     private:
-        std::map<std::string, float> input;
+        std::multimap<std::string, std::string> inputStr;
 };
+
+bool checkValidKey(std::string key);
 
 #endif

@@ -1,7 +1,7 @@
 #include <iostream>
 #include "array.hpp"
 
-#define MAX_VAL 5
+#define MAX_VAL 0
 int main(int, char**)
 {
     Array<int> numbers(MAX_VAL);
