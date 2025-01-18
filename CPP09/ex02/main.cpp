@@ -21,8 +21,12 @@ int main(int argc, char **argv) {
         return 1;
     }
 
+    std::cout << "Input successfully parsed. Ready for sorting.\n";
     std::cout << "Before sorting:" << std::endl;
     printVector(pm.getNumbers());
-    std::cout << "Input successfully parsed. Ready for sorting.\n";
+    std::cout << "Recursive deviding" << std::endl;
+    recursiveDividing(pm.getNumbers(), pm.getPairs());
+    std::cout << "Create sequence" << std::endl;
+    createSequences(pm.getPairs(), pm.getMain(), pm.getPend());
     return 0;
 }

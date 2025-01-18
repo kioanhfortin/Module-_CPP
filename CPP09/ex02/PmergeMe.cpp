@@ -36,3 +36,36 @@ void parsing(int argc, char **argv, PmergeMe &pm) {
         }
     }
 }
+
+void recursiveDividing(std::vector<int>& elements, std::vector<Pair>& pairs,  int depth = 0) {
+
+    if(elements.size() < 2)
+        return;
+
+    std::vector<int> nextElements;
+
+    for (size_t i = 0; i < elements.size(); i += 2) {
+        Pair p(elements[i], elements[i + 1]);
+        pairs.push_back(p);
+        nextElements.push_back(p.a);
+    }
+    if ((elements.size() % 2) != 0) {
+        nextElements.push_back(elements.back()); //Ajoute number impair
+    }
+    std::sort(nextElements.begin(), nextElements.end());
+    recursiveDividing(nextElements, pairs, depth + 1);
+}
+
+void createSequences(const std::vector<Pair> &pairs, std::vector<int> &main, std::vector<int> &pend) {
+    if (pairs.empty())
+        return;
+    main.push_back(pairs[0].b);
+
+    for(size_t i = 0; i < pairs.size(); i++) {
+        main.push_back(pairs[i].a);
+        if (i != 0) {
+            pend.push_back(pairs[i].b);
+        }
+    }
+}
+
