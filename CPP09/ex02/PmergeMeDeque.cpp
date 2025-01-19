@@ -1,6 +1,6 @@
-#include "PmergeMe.hpp"
+#include "PmergeMeDeque.hpp"
 
-void printVector(std::vector<int> &vec) {
+void printdeque(std::deque<int> &vec) {
     for (size_t i = 0; i < vec.size(); i++) {
         std::cout << vec[i] << " ";
     }
@@ -51,7 +51,7 @@ void parsing(int argc, char **argv, PmergeMe &pm) {
     }
 }
 
-int recursiveDividing(std::vector<int> &elements, std::vector<int> &pairs, int depth) {
+int recursiveDividing(std::deque<int> &elements, std::deque<int> &pairs, int depth) {
  
     if(elements.size() < 2) {
         if (elements.size() == 1) {
@@ -60,7 +60,7 @@ int recursiveDividing(std::vector<int> &elements, std::vector<int> &pairs, int d
         return -1;
     }
 
-    std::vector<int> nextElements;
+    std::deque<int> nextElements;
     std::unordered_set<int> seen;
 
     for (size_t i = 0; i + 1 < elements.size(); i += 2) {
@@ -76,7 +76,7 @@ int recursiveDividing(std::vector<int> &elements, std::vector<int> &pairs, int d
     return recursiveDividing(nextElements, pairs, depth + 1);
 }
 
-void createSequences(const std::vector<int> &pairs, std::vector<int> &main, std::vector<int> &pend) {
+void createSequences(const std::deque<int> &pairs, std::deque<int> &main, std::deque<int> &pend) {
     for (size_t i = 0; i < pairs.size(); i += 2) {
         main.push_back(pairs[i]);
         if (i + 1 < pairs.size())
@@ -86,8 +86,8 @@ void createSequences(const std::vector<int> &pairs, std::vector<int> &main, std:
     std::sort(pend.begin(), pend.end());
 }
 
-std::vector<int> generateJacobsthal(int size) {
-    std::vector<int> jacobsthal;
+std::deque<int> generateJacobsthal(int size) {
+    std::deque<int> jacobsthal;
     if (size <= 0)
         return jacobsthal;
     jacobsthal.push_back(0);
@@ -104,15 +104,15 @@ std::vector<int> generateJacobsthal(int size) {
     return jacobsthal;
 }
 
-void binaryInsert(std::vector<int> &main, int element) {
+void binaryInsert(std::deque<int> &main, int element) {
     if (std::find(main.begin(), main.end(), element) == main.end()) {
-        std::vector<int>::iterator position = std::lower_bound(main.begin(), main.end(), element);
+        std::deque<int>::iterator position = std::lower_bound(main.begin(), main.end(), element);
         main.insert(position, element);
     }
 }
 
-void insertPendIntoMain(std::vector<int> &main, const std::vector<int> &pend) {
-    std::vector<int> jacobsthal = generateJacobsthal(static_cast<int>(pend.size()));
+void insertPendIntoMain(std::deque<int> &main, const std::deque<int> &pend) {
+    std::deque<int> jacobsthal = generateJacobsthal(static_cast<int>(pend.size()));
     std::unordered_set<int> insertedIndices;
 
     for (size_t index = 0; index < jacobsthal.size(); ++index) {
@@ -135,7 +135,7 @@ void insertPendIntoMain(std::vector<int> &main, const std::vector<int> &pend) {
     }
 }
 
-void insertPendOddIntoMain(std::vector<int> &main, int oddElement) {
+void insertPendOddIntoMain(std::deque<int> &main, int oddElement) {
     if (oddElement != -1 && std::find(main.begin(), main.end(), oddElement) == main.end()) {
         std::cout << "Inserting odd element " << oddElement << std::endl;
         binaryInsert(main, oddElement);

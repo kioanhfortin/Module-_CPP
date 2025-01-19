@@ -14,12 +14,12 @@ class PmergeMe {
         PmergeMe() {}
         ~PmergeMe() {}
         std::vector<int> &getNumbers() { return numbers; }
-        std::deque<int> &getPairs() { return pairs; }
+        std::vector<int> &getPairs() { return pairs; }
         std::vector<int> &getMain() { return main; }
         std::vector<int> &getPend() { return pend; }
     private:
         std::vector<int> numbers;
-        std::deque<int> pairs;
+        std::vector<int> pairs;
         std::vector<int> main;
         std::vector<int> pend;
 };
@@ -29,9 +29,9 @@ void printVector(std::vector<int> &vec);
 
 bool isNumber(const std::string &token);
 void parsing(int argc, char **argv, PmergeMe &pm);
-int iterativeDividing(std::vector<int> &elements, std::deque<int> &pairs);
-int recursiveDividing(std::vector<int> &elements, std::deque<int> &pairs, int depth);
-void createSequences(const std::deque<int> &pairs, std::vector<int> &main, std::vector<int> &pend);
+int iterativeDividing(std::vector<int> &elements, std::vector<int> &pairs);
+int recursiveDividing(std::vector<int> &elements, std::vector<int> &pairs, int depth);
+void createSequences(const std::vector<int> &pairs, std::vector<int> &main, std::vector<int> &pend);
 void insertPendIntoMain(std::vector<int> &main, const std::vector<int> &pend);
 void insertPendOddIntoMain(std::vector<int> &main, int oddElement);
 void binaryInsert(std::vector<int> &main, int element);
