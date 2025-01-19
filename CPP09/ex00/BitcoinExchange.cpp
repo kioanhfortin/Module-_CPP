@@ -28,8 +28,10 @@ bool checkValidKey(std::string key) {
         return false;
     if (month == 2) {
         bool isLeapYear = (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
-        if (isLeapYear && day > 29) return false;
-        if (!isLeapYear && day > 28) return false;
+        if (isLeapYear && day > 29)
+            return false;
+        if (!isLeapYear && day > 28)
+            return false;
     }
     if ((month == 4 || month == 6 || month == 9 || month == 11) && day > 30) {
         return false;

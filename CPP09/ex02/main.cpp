@@ -17,24 +17,29 @@ int main(int argc, char** argv) {
     std::cout << "Input successfully parsed. Ready for sorting.\n";
     std::cout << "Before sorting:" << std::endl;
     printVector(pm.getNumbers());
+    std::cout << std::endl;
 
     std::cout << "Recursive deviding." << std::endl;
     int oddElement = recursiveDividing(pm.getNumbers(), pm.getPairs(), 0);
     printDeque(pm.getPairs());
     std::cout << "Odd element: " << oddElement << std::endl;
+    std::cout << std::endl;
 
     std::cout << "Create sequence." << std::endl;
     createSequences(pm.getPairs(), pm.getMain(), pm.getPend());
     printVector(pm.getMain());
     printVector(pm.getPend());
+    std::cout << std::endl;
 
     std::cout << "Binary insert using the Jacobsthal sequence." << std::endl;
     insertPendIntoMain(pm.getMain(), pm.getPend());
     printVector(pm.getMain());
+    std::cout << std::endl;
 
     std::cout << "Binary insert odd element." << std::endl;
-    insertPendOddIntoMain(pm.getMain(), pm.getPend(), oddElement);
+    insertPendOddIntoMain(pm.getMain(), oddElement);
     printVector(pm.getMain());
+    std::cout << std::endl;
 
     std::cout << "After sorting:" << std::endl;
     printVector(pm.getMain());

@@ -61,104 +61,96 @@ int recursiveDividing(std::vector<int> &elements, std::deque<int> &pairs, int de
     }
 
     std::vector<int> nextElements;
+    std::unordered_set<int> seen;
 
     for (size_t i = 0; i + 1 < elements.size(); i += 2) {
-        if (elements[i] < elements[i + 1]) {
-            pairs.push_back(elements[i]);
-            pairs.push_back(elements[i + 1]);
-        } else {
-            pairs.push_back(elements[i + 1]);
-            pairs.push_back(elements[i]);
-        }
-        nextElements.push_back(std::max(elements[i], elements[i + 1]));
+        int small = std::min(elements[i], elements[i + 1]);
+        int large = std::max(elements[i], elements[i + 1]);
+
+        pairs.push_back(small);
+        nextElements.push_back(large);
     }
+    if (elements.size() % 2 != 0)
+        nextElements.push_back(elements.back());
 
-    int oddElement = -1;
-    if ((elements.size() % 2) != 0) {
-        oddElement = elements.back(); //Ajoute number impair
-    }
+    // int oddElement = -1;
+    // if ((elements.size() % 2) != 0) {
+    //     oddElement = elements.back(); //Ajoute number impair
+    // }
 
-    int recursiveOdd = recursiveDividing(nextElements, pairs, depth + 1);
-
-    if (recursiveOdd != -1) {
-        return oddElement;
-    }
-
-    return oddElement;
+    return recursiveDividing(nextElements, pairs, depth + 1);
 }
 
 void createSequences(const std::deque<int> &pairs, std::vector<int> &main, std::vector<int> &pend) {
-    if (pairs.empty())
-        return;
+    // if (pairs.empty())
+    //     return;
 
-    main.push_back(pairs[0]);
+    // main.push_back(pairs[0]);
 
-    for(size_t i = 2; i < pairs.size(); i += 2) {
-        if (std::find(pend.begin(), pend.end(), pairs[i]) == pend.end())
-            pend.push_back(pairs[i]);
-        if (std::find(main.begin(), main.end(), pairs[i + 1]) == main.end())
-            main.push_back(pairs[i + 1]);
+    // for(size_t i = 2; i < pairs.size(); i += 2) {
+    //     pend.push_back(pairs[i]);
+    //     main.push_back(pairs[i + 1]);
+    // }
+    for (size_t i = 0; i < pairs.size(); i += 2) {
+        main.push_back(pairs[i]);
+        if (i + 1 < pairs.size())
+            pend.push_back(pairs[i + 1]);
     }
+    std::sort(main.begin(), main.end());
+    std::sort(pend.begin(), pend.end());
 }
 
 std::vector<int> generateJacobsthal(int size) {
     std::vector<int> jacobsthal;
-    if (size == 0)
+    if (size <= 0)
         return jacobsthal;
     jacobsthal.push_back(0);
     if (size == 1)
         return jacobsthal;
     jacobsthal.push_back(1);
 
-    for (int i = 2; i < size; i++) {
-        jacobsthal.push_back(jacobsthal[i - 1] + 2 * jacobsthal[i -2]);
+    for (int i = 2; i < size; ++i) {
+        int next = jacobsthal[i - 1] + 2 * jacobsthal[i - 2];
+        if (next >= size)
+            break;
+        jacobsthal.push_back(next);
     }
     return jacobsthal;
 }
 
 void binaryInsert(std::vector<int> &main, int element) {
-    std::vector<int>::iterator position = std::lower_bound(main.begin(), main.end(), element);
-    main.insert(position, element);
+    if (std::find(main.begin(), main.end(), element) == main.end()) {
+        std::vector<int>::iterator position = std::lower_bound(main.begin(), main.end(), element);
+        main.insert(position, element);
+    }
 }
 
 void insertPendIntoMain(std::vector<int> &main, const std::vector<int> &pend) {
-    std::vector<int> jacobsthal = generateJacobsthal(pend.size());
-    // std::vector<bool> inserted(pend.size(), false);
-    std::unordered_set<int> used_indices;
+    std::vector<int> jacobsthal = generateJacobsthal(static_cast<int>(pend.size()));
+    std::unordered_set<int> insertedIndices;
 
-    std::cout << "Jacobsthal sequence: ";
-    for (size_t i = 0; i < jacobsthal.size(); i++) {
-        std::cout << jacobsthal[i] << " ";
-    }
-    std::cout << std::endl;
-
-    for (size_t index = 0; index < jacobsthal.size(); index++) {
-        if (jacobsthal[index] >= static_cast<int>(pend.size()))
+    for (size_t index = 0; index < jacobsthal.size(); ++index) {
+        int jacobIndex = jacobsthal[index];
+        if (jacobIndex >= static_cast<int>(pend.size())) {
+            std::cerr << "Jacobsthal index out of bounds: " << jacobsthal[index] << " >= " << pend.size() << std::endl;
             continue;
-        if (used_indices.find(jacobsthal[index]) == used_indices.end()) {
+        }
+        if (insertedIndices.find(jacobIndex) == insertedIndices.end()) {
             std::cout << "Inserting " << pend[jacobsthal[index]] << " from pend into main.\n";
             binaryInsert(main, pend[jacobsthal[index]]);
-            used_indices.insert(jacobsthal[index]);
+            insertedIndices.insert(jacobIndex);
         }
     }
-
-    for (size_t i = 0; i < pend.size(); i++) {
-        if (used_indices.find(i) == used_indices.end()) {
-            std::cout << "Inserting remaining " << pend[i] << " into main.\n";
+    for (size_t i = 0; i < pend.size(); ++i) {
+        if (insertedIndices.find(i) == insertedIndices.end()) {
+            std::cout << "Inserting remaining " << pend[i] << " from pend into main.\n";
             binaryInsert(main, pend[i]);
-            used_indices.insert(i);
         }
     }
 }
 
-void insertPendOddIntoMain(std::vector<int> &main, const std::vector<int> &pend, int oddElement) {
-    // for (size_t i = 0; i < pend.size(); i++) {
-    //     binaryInsert(main, pend[i]);
-    // }
-    // insertPendIntoMain(main, pend);
-    (void)pend;
-
-    if (oddElement != -1) {
+void insertPendOddIntoMain(std::vector<int> &main, int oddElement) {
+    if (oddElement != -1 && std::find(main.begin(), main.end(), oddElement) == main.end()) {
         std::cout << "Inserting odd element " << oddElement << std::endl;
         binaryInsert(main, oddElement);
     }

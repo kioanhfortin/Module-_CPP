@@ -1,7 +1,6 @@
 NAME = PmergeMe
 
 CC = c++
-
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRCS = main.cpp PmergeMe.cpp
@@ -9,15 +8,25 @@ OBJS = $(SRCS:.cpp=.o)
 
 RM = rm -f
 
-all : $(NAME)
+BREW = /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+SHUF_CMD = shuf
 
-$(NAME) :		$(OBJS)
-						$(CC) $(CPPFLAGS) $(OBJS) -o $(NAME)
+all: check_shuf $(NAME)
 
-clean :
-				$(RM) $(OBJS)
+$(NAME): $(OBJS)
+	$(CC) $(CPPFLAGS) $(OBJS) -o $(NAME)
 
-fclean : clean
-				$(RM) $(NAME)
+check_shuf:
+	@command -v $(SHUF_CMD) >/dev/null 2>&1 || { \
+		echo "shuf not found. Installing coreutils with Homebrew..."; \
+		brew list coreutils >/dev/null 2>&1 || brew install coreutils; \
+		echo "Installation complete. You can now use shuf as gshuf."; \
+	}
 
-re : fclean all
+clean:
+	$(RM) $(OBJS)
+
+fclean: clean
+	$(RM) $(NAME)
+
+re: fclean all
