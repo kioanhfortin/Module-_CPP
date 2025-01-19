@@ -42,5 +42,7 @@ class PmergeMe {
 void parsing(int argc, char **argv, PmergeMe &pm);
 void recursiveDividing(std::vector<int>& elements, std::vector<Pair>& pairs);
 void createSequences(const std::vector<Pair> &pairs, std::vector<int> &main, std::vector<int> &pend);
+void insertPendIntoMain(std::vector<int> &main, const std::vector<int> &pend);
+void insertPendOddIntoMain(std::vector<int> &main, const std::vector<int> &pend, int oddElement);
 
 #endif
